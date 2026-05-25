@@ -23,21 +23,24 @@
       position:absolute;inset:0;
       width:100%;height:100%;
       object-fit:cover;
-      /* center horizontally, show top portion (lanterns + castle) on desktop,
-         on mobile 'center top' already works great */
-      object-position:center 15%;
+      object-position:center 20%;
       display:block;
     }
     .bg-fixed::after{
       content:'';position:absolute;inset:0;z-index:1;
       background:linear-gradient(
         to bottom,
-        rgba(5,2,10,0.04) 0%,
-        rgba(5,2,10,0.12) 30%,
-        rgba(5,2,10,0.30) 58%,
-        rgba(5,2,10,0.58) 82%,
-        rgba(5,2,10,0.72) 100%
+        rgba(5,2,10,0.02) 0%,
+        rgba(5,2,10,0.10) 28%,
+        rgba(5,2,10,0.28) 55%,
+        rgba(5,2,10,0.55) 80%,
+        rgba(5,2,10,0.70) 100%
       );
+    }
+    /* On desktop the fixed image covers the viewport — the page scrolls OVER it.
+       We keep position:fixed so the image stays visible behind all sections. */
+    @media(min-width:768px){
+      .bg-fixed img{ object-position:center 10%; }
     }
 
     .page{position:relative;z-index:1}
@@ -67,10 +70,11 @@
       text-align:center;
     }
     .hero-date{
-      font-family:'Cormorant Garamond',serif;font-style:italic;
-      font-size:clamp(1rem,3vw,1.4rem);color:var(--gold-light);
-      letter-spacing:0.18em;margin-top:0.6rem;
-      text-shadow:0 0 30px rgba(201,168,76,0.7),1px 1px 6px rgba(0,0,0,1);
+      font-family:'Great Vibes',cursive;
+      font-size:clamp(1.6rem,5vw,2.6rem);
+      color:#fff;
+      letter-spacing:0.05em;margin-top:0.2rem;
+      text-shadow:0 0 30px rgba(255,255,255,0.6),1px 2px 8px rgba(0,0,0,1),0 0 60px rgba(201,168,76,0.4);
       animation:fadeDown 1.2s 0.15s ease both;
     }
     .hero-tagline{
@@ -131,9 +135,24 @@
     .cd-num{font-family:'Cinzel',serif;font-size:1.7rem;font-weight:600;color:var(--gold-light);display:block;line-height:1;text-shadow:0 0 20px rgba(201,168,76,0.6)}
     .cd-label{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:0.25rem}
 
-    /* ─── MAPS BUTTON ─── */
-    .maps-btn{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.18);border:1px solid var(--gold);color:var(--gold-light);text-decoration:none;padding:0.7rem 1.5rem;border-radius:50px;font-family:'Cinzel',serif;font-size:0.82rem;letter-spacing:0.08em;margin-top:1.2rem;transition:background 0.2s,transform 0.2s,box-shadow 0.2s}
-    .maps-btn:hover{background:rgba(201,168,76,0.32);transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,0.3)}
+    /* ─── MAPPA SVG ─── */
+    .map-wrap{position:relative;border-radius:0 0 6px 6px;overflow:hidden}
+    .map-wrap svg{display:block;width:100%;height:auto}
+    .map-btn{
+      position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);
+      display:inline-flex;align-items:center;gap:0.5rem;
+      background:rgba(10,4,22,0.82);border:1px solid var(--gold);
+      color:var(--gold-light);text-decoration:none;
+      padding:0.55rem 1.3rem;border-radius:50px;
+      font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.08em;
+      white-space:nowrap;transition:background 0.2s,transform 0.2s;
+    }
+    .map-btn:hover{background:rgba(201,168,76,0.25);transform:translateX(-50%) translateY(-2px)}
+    .map-label{
+      font-family:'Cinzel',serif;font-size:0.9rem;
+      color:var(--gold-light);letter-spacing:0.08em;
+      padding:1rem 1.4rem 0.6rem;display:block;
+    }
 
     /* ─── TIMELINE ─── */
     .timeline{position:relative;padding-left:2.4rem;margin-top:0.5rem}
@@ -172,7 +191,7 @@
 <body>
 
 <div class="bg-fixed">
-  <img src="rapunzel.jpeg" alt="" aria-hidden="true" />
+  <img src="rapunzel.jpg" alt="" aria-hidden="true" />
 </div>
 
 <div class="page">
@@ -226,21 +245,105 @@
 
   <!-- DOVE -->
   <div class="section reveal">
-    <div class="glass">
-      <span class="section-emoji">📍</span>
-      <h2 class="section-title">Dove</h2>
-      <p class="section-subtitle">Il luogo della nostra favola</p>
-      <div class="section-line"></div>
-      <p class="section-body">
-        <strong style="color:var(--gold-light);font-family:'Cinzel',serif;letter-spacing:0.06em">Parco Gambrinus 🌳</strong><br>
-        <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,0.7)">Via Capitello, 18 — San Polo di Piave (TV)</span>
-      </p>
-      <p class="section-body" style="margin-top:0.9rem">
-        Un parco incantato, tra il verde e la luce del tramonto —<br>
-        lo scenario perfetto per il giorno più magico della nostra vita. 🌅🍃
-      </p>
-      <div style="text-align:center">
-        <a class="maps-btn" href="https://maps.google.com/?q=Parco+Gambrinus+Via+Capitello+18+San+Polo+di+Piave" target="_blank">📍 Apri in Google Maps</a>
+    <div class="glass" style="padding:0;overflow:hidden;">
+      <span class="map-label">📍 &nbsp;Dove ci sposiamo</span>
+      <div style="padding:0 1.8rem 0.6rem;">
+        <p class="section-subtitle" style="margin-bottom:0.4rem">Il luogo della nostra favola</p>
+        <p class="section-body" style="margin-bottom:0.5rem">
+          <strong style="color:var(--gold-light);font-family:'Cinzel',serif;letter-spacing:0.06em">Parco Gambrinus 🌳</strong><br>
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,0.7)">Via Capitello, 18 — San Polo di Piave (TV)</span>
+        </p>
+        <p class="section-body" style="margin-bottom:1rem">
+          Un parco incantato, tra il verde e la luce del tramonto —<br>
+          lo scenario perfetto per il giorno più magico della nostra vita. 🌅🍃
+        </p>
+      </div>
+      <div class="map-wrap">
+        <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="skyglow" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#3a1a55" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#1a0828" stop-opacity="1"/>
+            </radialGradient>
+            <radialGradient id="pinpulse" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f0d98a" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#d4a843" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <!-- Cielo notturno -->
+          <rect width="360" height="200" fill="url(#skyglow)"/>
+          <!-- Stelle -->
+          <circle cx="20"  cy="15" r="1"   fill="#f0d98a" opacity="0.7"/>
+          <circle cx="50"  cy="8"  r="0.8" fill="#f0d98a" opacity="0.5"/>
+          <circle cx="90"  cy="20" r="1"   fill="#f0d98a" opacity="0.6"/>
+          <circle cx="130" cy="10" r="0.8" fill="#f0d98a" opacity="0.4"/>
+          <circle cx="200" cy="18" r="1"   fill="#f0d98a" opacity="0.7"/>
+          <circle cx="250" cy="8"  r="0.8" fill="#f0d98a" opacity="0.5"/>
+          <circle cx="310" cy="15" r="1"   fill="#f0d98a" opacity="0.6"/>
+          <circle cx="340" cy="25" r="0.8" fill="#f0d98a" opacity="0.4"/>
+          <circle cx="160" cy="5"  r="0.6" fill="#f0d98a" opacity="0.5"/>
+          <circle cx="280" cy="30" r="0.6" fill="#f0d98a" opacity="0.4"/>
+          <!-- Fiume Piave -->
+          <path d="M0,155 Q90,145 180,158 Q270,170 360,155 L360,182 Q270,195 180,182 Q90,168 0,178 Z" fill="#2a4a7a" opacity="0.5"/>
+          <!-- Strade -->
+          <line x1="30"  y1="120" x2="330" y2="120" stroke="#4a3060" stroke-width="8"/>
+          <line x1="30"  y1="120" x2="330" y2="120" stroke="#5a3870" stroke-width="5"/>
+          <line x1="180" y1="60"  x2="180" y2="155" stroke="#3a2050" stroke-width="6"/>
+          <line x1="0"   y1="90"  x2="120" y2="120" stroke="#3a2050" stroke-width="5"/>
+          <line x1="240" y1="120" x2="360" y2="95"  stroke="#3a2050" stroke-width="5"/>
+          <text x="180" y="116" font-family="sans-serif" font-size="7" fill="#c8a8d8" text-anchor="middle" opacity="0.9">Via Capitello</text>
+          <!-- Alberi parco -->
+          <g opacity="0.85">
+            <circle cx="128" cy="90" r="11" fill="#1a4a20"/>
+            <circle cx="144" cy="84" r="9"  fill="#1e5a24"/>
+            <circle cx="116" cy="85" r="8"  fill="#1a4a20"/>
+            <circle cx="160" cy="91" r="10" fill="#1e5a24"/>
+            <circle cx="104" cy="91" r="8"  fill="#163a1a"/>
+            <circle cx="174" cy="85" r="8"  fill="#1a4a20"/>
+          </g>
+          <!-- Castello tema Rapunzel -->
+          <g transform="translate(260,52)">
+            <rect x="0"  y="20" width="18" height="35" fill="#3a1a55" stroke="#6a3a8a" stroke-width="0.8"/>
+            <polygon points="9,0 -4,22 22,22" fill="#5a2a7a"/>
+            <rect x="6" y="30" width="6" height="8" rx="3" fill="#f0d98a" opacity="0.85"/>
+            <rect x="-9" y="32" width="10" height="23" fill="#2a1040" stroke="#5a2a7a" stroke-width="0.6"/>
+            <polygon points="4,22 -11,34 15,34" fill="#4a1a6a"/>
+            <rect x="17" y="35" width="10" height="20" fill="#2a1040" stroke="#5a2a7a" stroke-width="0.6"/>
+            <polygon points="22,25 11,37 33,37" fill="#4a1a6a"/>
+            <line x1="9" y1="0" x2="9" y2="-8" stroke="#d4a843" stroke-width="1"/>
+            <polygon points="9,-8 18,-5 9,-2" fill="#d4a843"/>
+          </g>
+          <!-- Lanternine decorative -->
+          <g transform="translate(318,46)" opacity="0.75">
+            <rect x="-5" y="0" width="10" height="14" rx="2" fill="#f0d98a" opacity="0.9"/>
+            <line x1="0" y1="-5" x2="0" y2="0" stroke="#d4a843" stroke-width="1"/>
+            <polygon points="-5,14 5,14 3,19 -3,19" fill="#d4a843" opacity="0.6"/>
+            <circle cx="0" cy="7" r="3" fill="#fff8e0" opacity="0.85"/>
+          </g>
+          <g transform="translate(34,46)" opacity="0.65">
+            <rect x="-5" y="0" width="10" height="14" rx="2" fill="#f0d98a" opacity="0.9"/>
+            <line x1="0" y1="-5" x2="0" y2="0" stroke="#d4a843" stroke-width="1"/>
+            <polygon points="-5,14 5,14 3,19 -3,19" fill="#d4a843" opacity="0.6"/>
+            <circle cx="0" cy="7" r="3" fill="#fff8e0" opacity="0.85"/>
+          </g>
+          <!-- PIN animato -->
+          <g transform="translate(178,108)">
+            <circle cx="0" cy="0" r="10" fill="url(#pinpulse)" opacity="0.3"/>
+            <circle cx="0" cy="0" r="6"  fill="#d4a843" opacity="0.55"/>
+            <circle cx="0" cy="0" r="3.5" fill="#f0d98a"/>
+            <circle cx="0" cy="0" r="12" fill="none" stroke="#d4a843" stroke-width="1.5" opacity="0.5">
+              <animate attributeName="r" from="8" to="18" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" from="0.5" to="0" dur="2s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+          <!-- Etichette -->
+          <rect x="118" y="130" width="124" height="18" rx="4" fill="#2a1038" opacity="0.88"/>
+          <text x="180" y="143" font-family="sans-serif" font-size="8.5" fill="#f0d98a" text-anchor="middle" font-weight="bold">Parco Gambrinus</text>
+          <text x="180" y="170" font-family="sans-serif" font-size="7" fill="#c8a8d8" text-anchor="middle" opacity="0.75">San Polo di Piave (TV)</text>
+          <!-- spazio per pulsante -->
+          <rect x="0" y="176" width="360" height="24" fill="#1a0828" opacity="0.6"/>
+        </svg>
+        <a class="map-btn" href="https://maps.google.com/?q=Parco+Gambrinus+Via+Capitello+18+San+Polo+di+Piave" target="_blank">📍 &nbsp;Apri in Google Maps</a>
       </div>
     </div>
   </div>
@@ -248,19 +351,19 @@
   <!-- PROGRAMMA -->
   <div class="section reveal">
     <div class="glass">
-      <span class="section-emoji">🎬</span>
+      <span class="section-emoji">🪄</span>
       <h2 class="section-title">Come sarà la giornata</h2>
       <p class="section-subtitle">Una storia scritta per voi</p>
       <div class="section-line"></div>
       <p class="section-body" style="margin-bottom:1.4rem">Una giornata piena di magia, emozioni e amore…<br>proprio come in una favola Disney 💫🏰</p>
       <div class="timeline">
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16:00</div><div class="tl-title">🥂 Arrivo degli ospiti — si inizia con stile!</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16:00</div><div class="tl-title">🌟 Arrivo degli ospiti — benvenuti nel regno!</div></div>
         <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:00</div><div class="tl-title">💍 Cerimonia — il momento più atteso 🏰</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">18:30</div><div class="tl-title">✨ Aperitivo — musica, bollicine e sorrisi</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">20:00</div><div class="tl-title">🍽️ Cena — a tavola con chi amiamo</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">23:00</div><div class="tl-title">🎂 Taglio torta — dolce come noi</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">23:30</div><div class="tl-title">💃 Si balla! — la pista è tutta nostra 🪩🎶</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">02:00</div><div class="tl-title">🌙 Fine serata — ma la favola continua sempre</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">18:30</div><div class="tl-title">🥂 Aperitivo — musica, bollicine e sorrisi ✨</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">20:00</div><div class="tl-title">🍽️ Cena — a tavola con chi amiamo 🕯️</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">23:00</div><div class="tl-title">🎂 Taglio torta — dolce come noi 🌹</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">23:30</div><div class="tl-title">💃 Si balla! — la pista è tutta nostra 🎶🪄</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">02:00</div><div class="tl-title">🌙 Fine serata — ma la favola continua sempre 🌠</div></div>
       </div>
     </div>
   </div>
@@ -314,6 +417,16 @@
 </div>
 
 <script>
+  // Ensure bg image fills correctly on desktop (some browsers need a nudge)
+  (function(){
+    const img = document.querySelector('.bg-fixed img');
+    function fixBg(){
+      // Force repaint on resize so fixed bg redraws
+      img.style.transform = 'translateZ(0)';
+    }
+    window.addEventListener('resize', fixBg);
+  })();
+
   function updateCD(){
     const diff=new Date('2026-09-04T16:00:00')-new Date();
     if(diff<=0){document.getElementById('countdown').innerHTML='<p style="font-family:\'Cinzel\',serif;color:var(--gold-light);font-size:1.1rem">🎉 È il grande giorno! 🎉</p>';return}
