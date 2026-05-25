@@ -6,754 +6,309 @@
   <title>Erika &amp; Elisabetta ♡ 4 Settembre 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --gold: #c9a84c;
-      --gold-light: #e8d5a3;
-      --gold-pale: #f7f0e0;
-      --rose: #c2748a;
-      --rose-light: #f0d5dc;
-      --deep: #2c1a2e;
-      --cream: #fdf8f2;
-      --text: #3a2a3c;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --gold:#c9a84c;--gold-light:#f0dc9a;--rose:#e8a0b0;
+      --glass:rgba(10,4,16,0.38);--glass-border:rgba(201,168,76,0.35);
     }
+    html{scroll-behavior:smooth}
+    body{font-family:'Lato',sans-serif;color:#fff;overflow-x:hidden;background:#0a0410}
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Lato', sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      overflow-x: hidden;
+    /* ─── BACKGROUND fixed ─── */
+    .bg-fixed{
+      position:fixed;inset:0;z-index:0;
+      background:url('https://i.imgur.com/HYuZ99W.jpeg') center top / cover no-repeat;
     }
-
-    /* ── STARS BACKGROUND ── */
-    .stars-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .star {
-      position: absolute;
-      border-radius: 50%;
-      background: var(--gold);
-      opacity: 0;
-      animation: twinkle var(--dur) ease-in-out infinite var(--delay);
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0; transform: scale(0.5); }
-      50% { opacity: 0.6; transform: scale(1); }
+    /* top area (lanterns) stays bright; only lower portion gets darker */
+    .bg-fixed::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(
+        to bottom,
+        rgba(5,2,10,0.04) 0%,
+        rgba(5,2,10,0.12) 30%,
+        rgba(5,2,10,0.30) 58%,
+        rgba(5,2,10,0.58) 82%,
+        rgba(5,2,10,0.72) 100%
+      );
     }
 
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem 1.5rem;
-      background: linear-gradient(160deg, #1a0a1e 0%, #2c1a2e 40%, #3d1f35 70%, #1a0a1e 100%);
-      overflow: hidden;
-      z-index: 1;
-    }
+    .page{position:relative;z-index:1}
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.18) 0%, transparent 70%),
-                  radial-gradient(ellipse at 80% 80%, rgba(194,116,138,0.15) 0%, transparent 50%);
+    /* ─── HERO ─── */
+    .hero{
+      min-height:100vh;
+      display:flex;flex-direction:column;align-items:center;
+      padding:4vh 1.5rem 2rem;
     }
+    .hero-names{
+      font-family:'Cinzel',serif;
+      font-size:clamp(2.2rem,9vw,5.5rem);
+      font-weight:600;color:var(--gold-light);
+      letter-spacing:0.06em;text-align:center;
+      text-shadow:0 0 60px rgba(201,168,76,0.9),0 0 120px rgba(201,168,76,0.5),2px 2px 10px rgba(0,0,0,1);
+      animation:fadeDown 1.2s ease both;
+    }
+    .hero-amp{
+      font-family:'Cormorant Garamond',serif;font-style:italic;
+      font-size:0.7em;color:var(--rose);margin:0 0.25em;
+      text-shadow:0 0 40px rgba(232,160,176,0.8),2px 2px 8px rgba(0,0,0,1);
+    }
+    .hero-date{
+      font-family:'Cormorant Garamond',serif;font-style:italic;
+      font-size:clamp(1rem,3vw,1.4rem);color:var(--gold-light);
+      letter-spacing:0.18em;margin-top:0.6rem;
+      text-shadow:0 0 30px rgba(201,168,76,0.7),1px 1px 6px rgba(0,0,0,1);
+      animation:fadeDown 1.2s 0.15s ease both;
+    }
+    .hero-tagline{
+      font-family:'Cormorant Garamond',serif;font-style:italic;
+      font-size:clamp(0.95rem,2.5vw,1.15rem);
+      color:rgba(255,255,255,0.88);text-align:center;
+      line-height:1.8;max-width:440px;margin-top:0.8rem;
+      text-shadow:1px 1px 8px rgba(0,0,0,1);
+      animation:fadeDown 1.2s 0.3s ease both;
+    }
+    .hero-spacer{flex:1}
+    .scroll-hint{
+      color:var(--gold-light);opacity:0.55;font-size:1.5rem;
+      animation:bounce 2s ease-in-out infinite;
+      text-shadow:0 0 10px rgba(201,168,76,0.6);margin-bottom:1rem;
+    }
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-    .hero-castle {
-      font-size: 4.5rem;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-      filter: drop-shadow(0 0 20px rgba(201,168,76,0.6));
-      animation: float 4s ease-in-out infinite;
+    /* ─── SECTIONS ─── */
+    .section{padding:2rem 1.2rem;max-width:660px;margin:0 auto}
+    .glass{
+      background:var(--glass);
+      backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+      border:1px solid var(--glass-border);border-radius:6px;
+      padding:2.2rem 1.8rem;position:relative;overflow:hidden;
+      box-shadow:0 8px 40px rgba(0,0,0,0.45),inset 0 0 0 1px rgba(255,255,255,0.04);
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    .glass::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:2px;
+      background:linear-gradient(90deg,transparent,var(--gold),var(--rose),var(--gold),transparent);
     }
+    .section-emoji{font-size:2.2rem;display:block;text-align:center;margin-bottom:0.4rem;filter:drop-shadow(0 0 8px rgba(201,168,76,0.5))}
+    .section-title{font-family:'Cinzel',serif;font-size:clamp(1.1rem,4vw,1.5rem);color:var(--gold-light);text-align:center;letter-spacing:0.1em;margin-bottom:0.2rem;text-shadow:0 0 20px rgba(201,168,76,0.5)}
+    .section-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--rose);text-align:center;margin-bottom:1.2rem}
+    .section-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0.6rem auto 1.2rem}
+    .section-body{font-size:0.97rem;line-height:1.85;color:rgba(255,255,255,0.9);text-align:center}
 
-    .hero-names {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2.2rem, 8vw, 4.5rem);
-      font-weight: 600;
-      color: var(--gold-light);
-      letter-spacing: 0.04em;
-      text-align: center;
-      text-shadow: 0 0 40px rgba(201,168,76,0.5);
-      animation: fadeUp 1s ease both;
+    /* ─── BOX FINALMENTE ─── */
+    .box-finalmente{
+      background:rgba(10,4,22,0.52);
+      backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+      border:1px solid var(--gold);border-radius:6px;
+      padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden;
+      box-shadow:0 0 60px rgba(201,168,76,0.12),0 8px 40px rgba(0,0,0,0.5);
     }
-    .hero-amp {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 0.75em;
-      color: var(--rose-light);
-      margin: 0 0.3em;
-    }
+    .box-finalmente::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),var(--rose),var(--gold),transparent)}
+    .box-finalmente .big-emoji{font-size:2.8rem;display:block;margin-bottom:0.7rem;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(201,168,76,0.6))}
+    .box-finalmente h2{font-family:'Cinzel',serif;font-size:clamp(1.4rem,5vw,2rem);letter-spacing:0.06em;color:var(--gold-light);margin-bottom:1rem;text-shadow:0 0 30px rgba(201,168,76,0.5)}
+    .box-finalmente p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.95rem,2.5vw,1.15rem);color:rgba(255,255,255,0.88);line-height:1.9;max-width:420px;margin:0 auto}
 
-    .hero-date {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.1rem, 3vw, 1.5rem);
-      color: var(--gold-light);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-top: 0.8rem;
-      opacity: 0.85;
-      animation: fadeUp 1s 0.2s ease both;
-    }
+    /* ─── COUNTDOWN ─── */
+    .date-pills{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
+    .date-pill{background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);border-radius:50px;padding:0.55rem 1.2rem;font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--gold-light)}
+    .countdown{display:flex;gap:0.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.3rem}
+    .cd-unit{text-align:center;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:0.7rem 1rem;min-width:65px}
+    .cd-num{font-family:'Cinzel',serif;font-size:1.7rem;font-weight:600;color:var(--gold-light);display:block;line-height:1;text-shadow:0 0 20px rgba(201,168,76,0.6)}
+    .cd-label{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:0.25rem}
 
-    .hero-divider {
-      width: 120px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 1.5rem auto;
-      animation: fadeUp 1s 0.3s ease both;
-    }
+    /* ─── MAPS BUTTON ─── */
+    .maps-btn{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.18);border:1px solid var(--gold);color:var(--gold-light);text-decoration:none;padding:0.7rem 1.5rem;border-radius:50px;font-family:'Cinzel',serif;font-size:0.82rem;letter-spacing:0.08em;margin-top:1.2rem;transition:background 0.2s,transform 0.2s,box-shadow 0.2s}
+    .maps-btn:hover{background:rgba(201,168,76,0.32);transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,0.3)}
 
-    .hero-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: var(--rose-light);
-      text-align: center;
-      line-height: 1.7;
-      max-width: 480px;
-      opacity: 0.9;
-      animation: fadeUp 1s 0.4s ease both;
-    }
+    /* ─── TIMELINE ─── */
+    .timeline{position:relative;padding-left:2.4rem;margin-top:0.5rem}
+    .timeline::before{content:'';position:absolute;left:0.85rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--rose),var(--gold),var(--rose))}
+    .tl-item{position:relative;margin-bottom:1.3rem}
+    .tl-item:last-child{margin-bottom:0}
+    .tl-dot{position:absolute;left:-1.98rem;top:0.2rem;width:13px;height:13px;background:var(--gold);border-radius:50%;border:2px solid rgba(10,4,22,0.8);box-shadow:0 0 8px rgba(201,168,76,0.7)}
+    .tl-time{font-family:'Cinzel',serif;font-size:0.82rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.08rem}
+    .tl-title{font-size:0.97rem;color:rgba(255,255,255,0.88);line-height:1.5}
 
-    .scroll-hint {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--gold-light);
-      opacity: 0.5;
-      font-size: 1.5rem;
-      animation: bounce 2s ease-in-out infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(8px); }
-    }
+    /* ─── BUTTONS ─── */
+    .btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.4rem}
+    .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:50px;font-family:'Cinzel',serif;font-size:0.82rem;letter-spacing:0.06em;text-decoration:none;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+    .btn-primary{background:rgba(194,116,138,0.55);border:1px solid rgba(232,160,176,0.6);color:#fff;backdrop-filter:blur(6px)}
+    .btn-gold{background:rgba(201,168,76,0.35);border:1px solid var(--gold);color:var(--gold-light);backdrop-filter:blur(6px)}
+    .btn-dark{background:rgba(10,4,22,0.6);border:1px solid rgba(201,168,76,0.5);color:var(--gold-light);backdrop-filter:blur(6px)}
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* ─── REGALO ─── */
+    .regalo-inner{background:rgba(201,168,76,0.08);border:1px dashed rgba(201,168,76,0.5);border-radius:8px;padding:1.4rem;text-align:center;margin-top:1rem}
+    .regalo-inner p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:rgba(255,255,255,0.85);line-height:1.8;margin-bottom:1.2rem}
 
-    /* ── SECTIONS ── */
-    .section {
-      position: relative;
-      z-index: 1;
-      padding: 4rem 1.5rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
+    /* ─── FOOTER ─── */
+    footer{position:relative;z-index:1;background:rgba(5,2,10,0.75);backdrop-filter:blur(16px);text-align:center;padding:2.5rem 1.5rem;border-top:1px solid rgba(201,168,76,0.2)}
+    footer .footer-names{font-family:'Cinzel',serif;font-size:1.25rem;letter-spacing:0.12em;color:var(--gold-light);margin-bottom:0.4rem}
+    footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,0.6)}
+    footer .footer-hearts{font-size:1.4rem;margin-top:1rem;opacity:0.5}
 
-    .section-inner {
-      background: #fff;
-      border: 1px solid var(--gold-light);
-      border-radius: 4px;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 4px 40px rgba(201,168,76,0.1), 0 1px 8px rgba(0,0,0,0.05);
-      position: relative;
-      overflow: hidden;
-    }
+    /* ─── REVEAL ─── */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
 
-    .section-inner::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--rose), var(--gold), var(--rose));
-    }
-
-    .section-corner {
-      position: absolute;
-      font-size: 1.8rem;
-      opacity: 0.25;
-    }
-    .section-corner.tl { top: 0.5rem; left: 0.7rem; }
-    .section-corner.tr { top: 0.5rem; right: 0.7rem; }
-    .section-corner.bl { bottom: 0.5rem; left: 0.7rem; }
-    .section-corner.br { bottom: 0.5rem; right: 0.7rem; }
-
-    .section-emoji {
-      font-size: 2.5rem;
-      display: block;
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.2rem, 4vw, 1.6rem);
-      color: var(--deep);
-      text-align: center;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.3rem;
-    }
-
-    .section-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--rose);
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-line {
-      width: 60px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 0.8rem auto 1.5rem;
-    }
-
-    .section-body {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: var(--text);
-      text-align: center;
-    }
-
-    /* ── BOX FINALMENTE ── */
-    .box-finalmente {
-      background: linear-gradient(135deg, #2c1a2e 0%, #3d1f35 100%);
-      color: var(--gold-light);
-      text-align: center;
-      padding: 3rem 2rem;
-      border-radius: 4px;
-      border: 1px solid var(--gold);
-      box-shadow: 0 0 60px rgba(201,168,76,0.15), inset 0 0 40px rgba(0,0,0,0.3);
-      position: relative;
-      overflow: hidden;
-    }
-    .box-finalmente::after {
-      content: '✨';
-      position: absolute;
-      font-size: 6rem;
-      opacity: 0.05;
-      right: -1rem;
-      bottom: -1rem;
-    }
-
-    .box-finalmente .big-emoji {
-      font-size: 3rem;
-      display: block;
-      margin-bottom: 0.8rem;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .box-finalmente h2 {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.5rem, 5vw, 2.2rem);
-      letter-spacing: 0.06em;
-      color: var(--gold-light);
-      margin-bottom: 1rem;
-    }
-
-    .box-finalmente p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: var(--rose-light);
-      line-height: 1.8;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-
-    /* ── QUANDO ── */
-    .date-grid {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-    .date-pill {
-      background: var(--gold-pale);
-      border: 1px solid var(--gold-light);
-      border-radius: 50px;
-      padding: 0.6rem 1.4rem;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: var(--deep);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .countdown {
-      display: flex;
-      gap: 0.8rem;
-      justify-content: center;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .cd-unit {
-      text-align: center;
-      background: var(--deep);
-      color: var(--gold-light);
-      border-radius: 8px;
-      padding: 0.8rem 1.1rem;
-      min-width: 70px;
-    }
-    .cd-num {
-      font-family: 'Cinzel', serif;
-      font-size: 1.8rem;
-      font-weight: 600;
-      line-height: 1;
-      display: block;
-    }
-    .cd-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.7;
-      margin-top: 0.3rem;
-    }
-
-    /* ── DOVE ── */
-    .location-info {
-      text-align: center;
-    }
-    .location-name {
-      font-family: 'Cinzel', serif;
-      font-size: 1.25rem;
-      color: var(--deep);
-      margin-bottom: 0.3rem;
-    }
-    .location-address {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: #666;
-      margin-bottom: 1.5rem;
-    }
-    .maps-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--deep);
-      color: var(--gold-light);
-      text-decoration: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: 1px solid var(--gold);
-    }
-    .maps-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(201,168,76,0.3);
-    }
-
-    /* ── TIMELINE ── */
-    .timeline {
-      position: relative;
-      padding-left: 2.5rem;
-      margin-top: 1rem;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0.9rem;
-      top: 0; bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--rose), var(--gold), var(--rose));
-    }
-    .tl-item {
-      position: relative;
-      margin-bottom: 1.5rem;
-    }
-    .tl-item:last-child { margin-bottom: 0; }
-    .tl-dot {
-      position: absolute;
-      left: -2.05rem;
-      top: 0.2rem;
-      width: 14px;
-      height: 14px;
-      background: var(--gold);
-      border-radius: 50%;
-      border: 2px solid #fff;
-      box-shadow: 0 0 0 2px var(--gold);
-    }
-    .tl-time {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      color: var(--gold);
-      letter-spacing: 0.1em;
-      margin-bottom: 0.1rem;
-    }
-    .tl-title {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--deep);
-    }
-
-    /* ── BUTTONS ── */
-    .btn-row {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.8rem 1.6rem;
-      border-radius: 50px;
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.06em;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: none;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--rose), #a05570);
-      color: #fff;
-    }
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold), #a8843a);
-      color: #fff;
-    }
-    .btn-dark {
-      background: var(--deep);
-      color: var(--gold-light);
-      border: 1px solid var(--gold);
-    }
-
-    /* ── REGALO ── */
-    .regalo-box {
-      background: var(--gold-pale);
-      border: 1px dashed var(--gold);
-      border-radius: 8px;
-      padding: 1.5rem;
-      text-align: center;
-      margin-top: 1rem;
-    }
-    .regalo-box p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--text);
-      line-height: 1.7;
-      margin-bottom: 1.2rem;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      position: relative;
-      z-index: 1;
-      background: var(--deep);
-      color: var(--gold-light);
-      text-align: center;
-      padding: 2.5rem 1.5rem;
-    }
-    footer .footer-names {
-      font-family: 'Cinzel', serif;
-      font-size: 1.3rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-    }
-    footer p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1rem;
-      opacity: 0.7;
-    }
-    footer .footer-hearts {
-      font-size: 1.5rem;
-      margin-top: 1rem;
-      opacity: 0.6;
-    }
-
-    /* ── SEPARATOR ── */
-    .sep {
-      text-align: center;
-      font-size: 1.4rem;
-      opacity: 0.4;
-      padding: 0.5rem 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (max-width: 480px) {
-      .section { padding: 2rem 1rem; }
-      .section-inner { padding: 2rem 1.2rem; }
-    }
+    @media(max-width:480px){.section{padding:1.5rem 0.9rem}.glass{padding:1.8rem 1.2rem}}
   </style>
 </head>
 <body>
 
-<!-- Stars -->
-<div class="stars-bg" id="stars"></div>
+<div class="bg-fixed"></div>
 
-<!-- ── HERO ── -->
-<section class="hero">
-  <div class="hero-castle">🏰</div>
-  <h1 class="hero-names">
-    Erika <span class="hero-amp">&amp;</span> Elisabetta
-  </h1>
-  <div class="hero-divider"></div>
-  <p class="hero-date">♡ 4 Settembre 2026 ♡</p>
-  <p class="hero-tagline">
-    Dopo anni di sogni, avventure e magia condivisa,<br>
-    il nostro racconto più bello sta per cominciare ✨
-  </p>
-  <div class="scroll-hint">↓</div>
-</section>
+<div class="page">
 
-<!-- ── FINALMENTE CI SPOSIAMO ── -->
-<div class="section">
-  <div class="box-finalmente">
-    <span class="big-emoji">💍</span>
-    <h2>Finalmente ci sposiamo!</h2>
-    <p>
-      Come in ogni favola Disney che si rispetti,<br>
-      c'è un momento in cui due cuori si trovano<br>
-      e decidono di non lasciarsi più. 🌹✨<br><br>
-      Questo è il nostro momento — e vogliamo viverlo<br>
-      insieme a voi, le persone più speciali della nostra storia. 🏰💛
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-names">Erika <span class="hero-amp">&amp;</span> Elisabetta</h1>
+    <p class="hero-date">♡ &nbsp;4 Settembre 2026&nbsp; ♡</p>
+    <p class="hero-tagline">
+      Dopo anni di sogni, avventure e magia condivisa,<br>
+      il nostro racconto più bello sta per cominciare ✨
     </p>
-  </div>
-</div>
+    <div class="hero-spacer"></div>
+    <div class="scroll-hint">↓</div>
+  </section>
 
-<!-- ── QUANDO ── -->
-<div class="section">
-  <div class="section-inner">
-    <span class="section-corner tl">🌟</span>
-    <span class="section-corner tr">🌟</span>
-    <span class="section-emoji">📅</span>
-    <h2 class="section-title">Quando</h2>
-    <div class="section-line"></div>
-    <div class="date-grid">
-      <div class="date-pill">📅 Venerdì 4 Settembre 2026</div>
-      <div class="date-pill">🕓 dalle ore 16:00</div>
+  <!-- FINALMENTE -->
+  <div class="section reveal">
+    <div class="box-finalmente">
+      <span class="big-emoji">💍</span>
+      <h2>Finalmente ci sposiamo!</h2>
+      <p>
+        Come in ogni favola Disney che si rispetti,<br>
+        c'è un momento in cui due cuori si trovano<br>
+        e decidono di non lasciarsi più. 🌹✨<br><br>
+        Questo è il nostro momento — e vogliamo viverlo<br>
+        insieme a voi, le persone più speciali della nostra storia. 🏰💛
+      </p>
     </div>
-    <div class="countdown" id="countdown">
-      <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">giorni</span></div>
-      <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">ore</span></div>
-      <div class="cd-unit"><span class="cd-num" id="cd-min">--</span><span class="cd-label">minuti</span></div>
-      <div class="cd-unit"><span class="cd-num" id="cd-sec">--</span><span class="cd-label">secondi</span></div>
-    </div>
-    <p class="section-body" style="margin-top:1rem; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.05rem; color:var(--rose);">
-      Segnati la data… e preparati alla magia! 🪄
-    </p>
   </div>
-</div>
 
-<!-- ── DOVE ── -->
-<div class="section">
-  <div class="section-inner">
-    <span class="section-corner tl">🌿</span>
-    <span class="section-corner tr">🌿</span>
-    <span class="section-emoji">📍</span>
-    <h2 class="section-title">Dove</h2>
-    <p class="section-subtitle">Il luogo della nostra favola</p>
-    <div class="section-line"></div>
-    <div class="location-info">
-      <p class="location-name">Parco Gambrinus 🌳</p>
-      <p class="location-address">Via Capitello, 18 — San Polo di Piave (TV)</p>
-      <p class="section-body" style="margin-bottom:1.5rem;">
-        Un parco incantato, tra il verde e la luce del tramonto,<br>
+  <!-- QUANDO -->
+  <div class="section reveal">
+    <div class="glass">
+      <span class="section-emoji">📅</span>
+      <h2 class="section-title">Quando</h2>
+      <div class="section-line"></div>
+      <div class="date-pills">
+        <div class="date-pill">📅 Venerdì 4 Settembre 2026</div>
+        <div class="date-pill">🕓 dalle ore 16:00</div>
+      </div>
+      <div class="countdown" id="countdown">
+        <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">giorni</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">ore</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-min">--</span><span class="cd-label">minuti</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-sec">--</span><span class="cd-label">secondi</span></div>
+      </div>
+      <p class="section-body" style="margin-top:1rem;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--rose)">Segnati la data… e preparati alla magia! 🪄</p>
+    </div>
+  </div>
+
+  <!-- DOVE -->
+  <div class="section reveal">
+    <div class="glass">
+      <span class="section-emoji">📍</span>
+      <h2 class="section-title">Dove</h2>
+      <p class="section-subtitle">Il luogo della nostra favola</p>
+      <div class="section-line"></div>
+      <p class="section-body">
+        <strong style="color:var(--gold-light);font-family:'Cinzel',serif;letter-spacing:0.06em">Parco Gambrinus 🌳</strong><br>
+        <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,0.7)">Via Capitello, 18 — San Polo di Piave (TV)</span>
+      </p>
+      <p class="section-body" style="margin-top:0.9rem">
+        Un parco incantato, tra il verde e la luce del tramonto —<br>
         lo scenario perfetto per il giorno più magico della nostra vita. 🌅🍃
       </p>
-      <a class="maps-btn" href="https://maps.google.com/?q=Parco+Gambrinus+Via+Capitello+18+San+Polo+di+Piave" target="_blank">
-        📍 Apri in Google Maps
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- ── PROGRAMMA ── -->
-<div class="section">
-  <div class="section-inner">
-    <span class="section-corner tl">✨</span>
-    <span class="section-corner tr">✨</span>
-    <span class="section-corner bl">✨</span>
-    <span class="section-corner br">✨</span>
-    <span class="section-emoji">🎬</span>
-    <h2 class="section-title">Come sarà la giornata</h2>
-    <p class="section-subtitle">Una storia scritta per voi</p>
-    <div class="section-line"></div>
-    <p class="section-body" style="margin-bottom:1.5rem;">
-      Una giornata piena di magia, emozioni e amore…<br>
-      proprio come in una favola Disney 💫🏰
-    </p>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">16:00</div>
-        <div class="tl-title">🥂 Arrivo degli ospiti — si inizia con stile!</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">17:00</div>
-        <div class="tl-title">💍 Cerimonia — il momento più atteso 🏰</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">18:30</div>
-        <div class="tl-title">✨ Aperitivo — musica, bollicine e sorrisi</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">20:00</div>
-        <div class="tl-title">🍽️ Cena — a tavola con chi amiamo</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">23:00</div>
-        <div class="tl-title">🎂 Taglio torta — dolce come noi</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-time">01:00</div>
-        <div class="tl-title">🌙 Fine serata — ma la favola continua sempre</div>
+      <div style="text-align:center">
+        <a class="maps-btn" href="https://maps.google.com/?q=Parco+Gambrinus+Via+Capitello+18+San+Polo+di+Piave" target="_blank">📍 Apri in Google Maps</a>
       </div>
     </div>
   </div>
-</div>
 
-<!-- ── CONFERMA ── -->
-<div class="section">
-  <div class="section-inner">
-    <span class="section-corner tl">💌</span>
-    <span class="section-corner tr">💌</span>
-    <span class="section-emoji">💬</span>
-    <h2 class="section-title">Confermaci la tua presenza</h2>
-    <p class="section-subtitle">Non vediamo l'ora di vederti!</p>
-    <div class="section-line"></div>
-    <p class="section-body">
-      Facci sapere se sarai con noi per questa giornata magica 🪄<br>
-      <strong>Risposta entro il 31 Luglio 2026</strong><br><br>
-      Puoi confermare tramite WhatsApp o compilando il modulo:
-    </p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="https://wa.me/393429435775" target="_blank">
-        💬 WhatsApp
-      </a>
-      <!-- Sostituisci INSERISCI_GOOGLE_FORM con il link reale -->
-      <a class="btn btn-dark" href="INSERISCI_GOOGLE_FORM" target="_blank">
-        📝 Modulo di conferma
-      </a>
+  <!-- PROGRAMMA -->
+  <div class="section reveal">
+    <div class="glass">
+      <span class="section-emoji">🎬</span>
+      <h2 class="section-title">Come sarà la giornata</h2>
+      <p class="section-subtitle">Una storia scritta per voi</p>
+      <div class="section-line"></div>
+      <p class="section-body" style="margin-bottom:1.4rem">Una giornata piena di magia, emozioni e amore…<br>proprio come in una favola Disney 💫🏰</p>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16:00</div><div class="tl-title">🥂 Arrivo degli ospiti — si inizia con stile!</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:00</div><div class="tl-title">💍 Cerimonia — il momento più atteso 🏰</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">18:30</div><div class="tl-title">✨ Aperitivo — musica, bollicine e sorrisi</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">20:00</div><div class="tl-title">🍽️ Cena — a tavola con chi amiamo</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">23:00</div><div class="tl-title">🎂 Taglio torta — dolce come noi</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">01:00</div><div class="tl-title">🌙 Fine serata — ma la favola continua sempre</div></div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- ── REGALO ── -->
-<div class="section">
-  <div class="section-inner">
-    <span class="section-corner tl">🎁</span>
-    <span class="section-corner tr">🎁</span>
-    <span class="section-emoji">✈️</span>
-    <h2 class="section-title">Un pensiero per noi</h2>
-    <p class="section-subtitle">Non è obbligatorio, ma ci scalda il cuore 💛</p>
-    <div class="section-line"></div>
-    <p class="section-body">
-      La vostra presenza è già il regalo più bello.<br>
-      Se però volete farci un dono,<br>
-      contribuirete al nostro <strong>viaggio di nozze</strong> —<br>
-      la nostra prima avventura da mogli ✈️🌍💛
-    </p>
-    <div class="regalo-box">
-      <p>
-        🏦 Per contribuire, usa il link qui sotto.<br>
-        Ogni piccolo gesto ci aiuterà a costruire<br>
-        ricordi meravigliosi nel mondo 🗺️✨
+  <!-- CONFERMA -->
+  <div class="section reveal">
+    <div class="glass">
+      <span class="section-emoji">💬</span>
+      <h2 class="section-title">Confermaci la tua presenza</h2>
+      <p class="section-subtitle">Non vediamo l'ora di vederti!</p>
+      <div class="section-line"></div>
+      <p class="section-body">
+        Facci sapere se sarai con noi per questa giornata magica 🪄<br>
+        <strong style="color:var(--gold-light)">Risposta entro il 31 Luglio 2026</strong><br><br>
+        Puoi confermare tramite WhatsApp o compilando il modulo:
       </p>
-      <!-- Sostituisci INSERISCI_LINK_REGALO con il link reale (PayPal, Satispay, bonifico, ecc.) -->
-      <a class="btn btn-gold" href="INSERISCI_LINK_REGALO" target="_blank">
-        🎁 Contribuisci al nostro viaggio
-      </a>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://wa.me/393429435775" target="_blank">💬 WhatsApp</a>
+        <a class="btn btn-dark" href="INSERISCI_GOOGLE_FORM" target="_blank">📝 Modulo di conferma</a>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-names">Erika &amp; Elisabetta</div>
-  <p>4 Settembre 2026 · San Polo di Piave</p>
-  <p style="margin-top:0.5rem;">Non vediamo l'ora di condividere questa magia con voi 🏰✨</p>
-  <div class="footer-hearts">🌟 ♡ 🌟</div>
-</footer>
+  <!-- REGALO -->
+  <div class="section reveal">
+    <div class="glass">
+      <span class="section-emoji">✈️</span>
+      <h2 class="section-title">Un pensiero per noi</h2>
+      <p class="section-subtitle">Non è obbligatorio, ma ci scalda il cuore 💛</p>
+      <div class="section-line"></div>
+      <p class="section-body">
+        La vostra presenza è già il regalo più bello.<br>
+        Se però volete farci un dono,<br>
+        contribuirete al nostro <strong style="color:var(--gold-light)">viaggio di nozze</strong> —<br>
+        la nostra prima avventura da mogli ✈️🌍💛
+      </p>
+      <div class="regalo-inner">
+        <p>🏦 Per contribuire, usa il link qui sotto.<br>Ogni piccolo gesto ci aiuterà a costruire<br>ricordi meravigliosi nel mondo 🗺️✨</p>
+        <a class="btn btn-gold" href="INSERISCI_LINK_REGALO" target="_blank">🎁 Contribuisci al nostro viaggio</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-names">Erika &amp; Elisabetta</div>
+    <p>4 Settembre 2026 · San Polo di Piave</p>
+    <p style="margin-top:0.4rem">Non vediamo l'ora di condividere questa magia con voi 🏰✨</p>
+    <div class="footer-hearts">🌟 ♡ 🌟</div>
+  </footer>
+
+</div>
 
 <script>
-  // ── Stars ──
-  const starsEl = document.getElementById('stars');
-  for (let i = 0; i < 60; i++) {
-    const s = document.createElement('div');
-    s.className = 'star';
-    const size = Math.random() * 3 + 1;
-    s.style.cssText = `
-      width:${size}px; height:${size}px;
-      top:${Math.random()*100}%;
-      left:${Math.random()*100}%;
-      --dur:${2+Math.random()*4}s;
-      --delay:-${Math.random()*6}s;
-    `;
-    starsEl.appendChild(s);
+  function updateCD(){
+    const diff=new Date('2026-09-04T16:00:00')-new Date();
+    if(diff<=0){document.getElementById('countdown').innerHTML='<p style="font-family:\'Cinzel\',serif;color:var(--gold-light);font-size:1.1rem">🎉 È il grande giorno! 🎉</p>';return}
+    document.getElementById('cd-days').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
+    document.getElementById('cd-hours').textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+    document.getElementById('cd-min').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    document.getElementById('cd-sec').textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
   }
-
-  // ── Countdown ──
-  function updateCountdown() {
-    const target = new Date('2026-09-04T16:00:00');
-    const now = new Date();
-    const diff = target - now;
-    if (diff <= 0) {
-      document.getElementById('countdown').innerHTML = '<p style="font-family:\'Cinzel\',serif;color:var(--gold);font-size:1.1rem;">🎉 È il grande giorno! 🎉</p>';
-      return;
-    }
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins = Math.floor((diff % 3600000) / 60000);
-    const secs = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
-    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-    document.getElementById('cd-min').textContent = String(mins).padStart(2,'0');
-    document.getElementById('cd-sec').textContent = String(secs).padStart(2,'0');
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
-  // ── Scroll fade-in ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.section').forEach(s => {
-    s.style.opacity = '0';
-    s.style.transform = 'translateY(30px)';
-    s.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-    observer.observe(s);
-  });
+  updateCD();setInterval(updateCD,1000);
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
