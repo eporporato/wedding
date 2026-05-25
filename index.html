@@ -15,13 +15,19 @@
     body{font-family:'Lato',sans-serif;color:#fff;overflow-x:hidden;background:#0a0410}
 
     /* ─── BACKGROUND fixed ─── */
+    /* Background: fixed on desktop, scroll on mobile (iOS Safari fix) */
     .bg-fixed{
       position:fixed;inset:0;z-index:0;
-      background:url('https://imgur.com/a/HYuZ99W.jpeg') center top / cover no-repeat;
+      background-color:#0a0410; /* fallback while image loads */
     }
-    /* top area (lanterns) stays bright; only lower portion gets darker */
+    .bg-fixed img{
+      position:absolute;inset:0;
+      width:100%;height:100%;
+      object-fit:cover;object-position:center top;
+      display:block;
+    }
     .bg-fixed::after{
-      content:'';position:absolute;inset:0;
+      content:'';position:absolute;inset:0;z-index:1;
       background:linear-gradient(
         to bottom,
         rgba(5,2,10,0.04) 0%,
@@ -158,7 +164,9 @@
 </head>
 <body>
 
-<div class="bg-fixed"></div>
+<div class="bg-fixed">
+  <img src="rapunzel.jpg" alt="" aria-hidden="true" />
+</div>
 
 <div class="page">
 
