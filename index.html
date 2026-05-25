@@ -59,18 +59,19 @@
       text-shadow:0 0 40px rgba(255,255,255,0.55),0 0 80px rgba(255,255,255,0.25),2px 3px 12px rgba(0,0,0,0.95);
       animation:fadeDown 1.2s ease both;
     }
-    hero-amp{
-      display:block;
-      /* Eredita font, colore e ombre dai nomi */
-      font-family:'Great Vibes',cursive;
-      color:#fff;
-      text-shadow:0 0 40px rgba(255,255,255,0.55),0 0 80px rgba(255,255,255,0.25),2px 3px 12px rgba(0,0,0,0.95);
-      /* Qui impostiamo la dimensione ridotta rispetto ai nomi */
-      font-size:clamp(2rem, 7vw, 4rem); 
-      margin:-10px 0; /* Regola questo valore per avvicinarla o allontanarla dai nomi */
-      text-align:center;
-      animation:fadeDown 1.2s ease both;
-    }
+ .hero-amp {
+  /* Cambiamo da block a inline-block per restare sulla stessa riga */
+  display: inline-block; 
+  font-family: 'Great Vibes', cursive;
+  color: #fff;
+  text-shadow: 0 0 40px rgba(255,255,255,0.55), 0 0 80px rgba(255,255,255,0.25), 2px 3px 12px rgba(0,0,0,0.95);
+  /* Dimensione ridotta */
+  font-size: clamp(2rem, 7vw, 4rem); 
+  /* Margini laterali per staccarla un po' dai nomi */
+  margin: 0 15px; 
+  text-align: center;
+  animation: fadeDown 1.2s ease both;
+}
     .hero-date{
       font-family:'Great Vibes',cursive;
       font-size:clamp(1.6rem,5vw,2.6rem);
