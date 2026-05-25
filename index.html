@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Erika &amp; Elisabetta ♡ 4 Settembre 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
@@ -14,16 +14,18 @@
     html{scroll-behavior:smooth}
     body{font-family:'Lato',sans-serif;color:#fff;overflow-x:hidden;background:#0a0410}
 
-    /* ─── BACKGROUND fixed ─── */
-    /* Background: fixed on desktop, scroll on mobile (iOS Safari fix) */
+    /* ─── BACKGROUND ─── */
     .bg-fixed{
       position:fixed;inset:0;z-index:0;
-      background-color:#0a0410; /* fallback while image loads */
+      background-color:#0a0410;
     }
     .bg-fixed img{
       position:absolute;inset:0;
       width:100%;height:100%;
-      object-fit:cover;object-position:center top;
+      object-fit:cover;
+      /* center horizontally, show top portion (lanterns + castle) on desktop,
+         on mobile 'center top' already works great */
+      object-position:center 15%;
       display:block;
     }
     .bg-fixed::after{
@@ -47,17 +49,22 @@
       padding:4vh 1.5rem 2rem;
     }
     .hero-names{
-      font-family:'Cinzel',serif;
-      font-size:clamp(2.2rem,9vw,5.5rem);
-      font-weight:600;color:var(--gold-light);
-      letter-spacing:0.06em;text-align:center;
-      text-shadow:0 0 60px rgba(201,168,76,0.9),0 0 120px rgba(201,168,76,0.5),2px 2px 10px rgba(0,0,0,1);
+      font-family:'Great Vibes',cursive;
+      font-size:clamp(3.8rem,14vw,9rem);
+      font-weight:400;color:#fff;
+      letter-spacing:0.02em;text-align:center;line-height:1.05;
+      text-shadow:0 0 40px rgba(255,255,255,0.55),0 0 80px rgba(255,255,255,0.25),2px 3px 12px rgba(0,0,0,0.95);
       animation:fadeDown 1.2s ease both;
     }
     .hero-amp{
-      font-family:'Cormorant Garamond',serif;font-style:italic;
-      font-size:0.7em;color:var(--rose);margin:0 0.25em;
-      text-shadow:0 0 40px rgba(232,160,176,0.8),2px 2px 8px rgba(0,0,0,1);
+      display:block;
+      font-family:'Great Vibes',cursive;
+      font-size:clamp(1.6rem,6.5vw,2.8rem);
+      color:#fff;
+      opacity:0.65;
+      text-shadow:0 0 20px rgba(255,255,255,0.9);
+      margin:-4px 0;
+      text-align:center;
     }
     .hero-date{
       font-family:'Cormorant Garamond',serif;font-style:italic;
@@ -165,14 +172,14 @@
 <body>
 
 <div class="bg-fixed">
-  <img src="rapunzel.jpeg" alt="" aria-hidden="true" />
+  <img src="rapunzel.jpg" alt="" aria-hidden="true" />
 </div>
 
 <div class="page">
 
   <!-- HERO -->
   <section class="hero">
-    <h1 class="hero-names">Erika <span class="hero-amp">&amp;</span> Elisabetta</h1>
+    <h1 class="hero-names">Erika<span class="hero-amp">&amp;</span>Elisabetta</h1>
     <p class="hero-date">♡ &nbsp;4 Settembre 2026&nbsp; ♡</p>
     <p class="hero-tagline">
       Dopo anni di sogni, avventure e magia condivisa,<br>
@@ -252,7 +259,8 @@
         <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">18:30</div><div class="tl-title">✨ Aperitivo — musica, bollicine e sorrisi</div></div>
         <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">20:00</div><div class="tl-title">🍽️ Cena — a tavola con chi amiamo</div></div>
         <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">23:00</div><div class="tl-title">🎂 Taglio torta — dolce come noi</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">01:00</div><div class="tl-title">🌙 Fine serata — ma la favola continua sempre</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">23:30</div><div class="tl-title">💃 Si balla! — la pista è tutta nostra 🪩🎶</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">02:00</div><div class="tl-title">🌙 Fine serata — ma la favola continua sempre</div></div>
       </div>
     </div>
   </div>
