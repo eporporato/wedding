@@ -31,29 +31,22 @@ body{
   background:#0a0410;
   font-size:16px;
   -webkit-text-size-adjust:100%;
-  position:relative;
 }
 
-.bg-fixed{position:absolute;top:0;left:0;right:0;z-index:0;pointer-events:none;background:#0a0410;}
-.bg-fixed img{
-  display:block;
-  position:relative;
-  left:50%;
-  transform:translateX(-50%);
-  width:100%;
-  height:auto;
+body{
+  background-image:url('rapunzel.jpg');
+  background-size:cover;
+  background-position:center 10%;
+  background-attachment:fixed;
+  background-repeat:no-repeat;
 }
-@media(min-width:660px){
-  .bg-fixed img{
-    width:660px;
-  }
+@supports (-webkit-touch-callout: none){
+  body{background-attachment:scroll;background-position:center top;}
 }
-.bg-fixed::before{
-  content:'';position:fixed;inset:0;z-index:1;
-  background:linear-gradient(to right, #0a0410 0%, transparent 22%, transparent 78%, #0a0410 100%);
-}
+.bg-fixed{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg-fixed img{display:none;}
 .bg-fixed::after{
-  content:'';position:fixed;inset:0;z-index:2;
+  content:'';position:absolute;inset:0;z-index:1;
   background:linear-gradient(to bottom,
     rgba(5,2,10,0.02) 0%,
     rgba(5,2,10,0.10) 28%,
