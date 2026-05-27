@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Erika &amp; Elisabetta ♡ 4 Settembre 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -18,12 +18,21 @@
   --hair-gold:#f5d26c;
   --glass:rgba(42,8,72,0.48);
   --glass-border:rgba(201,168,76,0.38);
+  --body-font:'Cormorant Garamond',serif;
+  --title-font:'Cinzel',serif;
+  --script-font:'Great Vibes',cursive;
 }
 
 html{scroll-behavior:smooth}
-body{font-family:'Lato',sans-serif;color:#fff;overflow-x:hidden;background:#0a0410}
+body{
+  font-family:var(--body-font);
+  color:#fff;
+  overflow-x:hidden;
+  background:#0a0410;
+  font-size:16px;
+  -webkit-text-size-adjust:100%;
+}
 
-/* ─── BACKGROUND ─── */
 body{
   background-image:url('rapunzel.jpg');
   background-size:cover;
@@ -56,7 +65,7 @@ body{
   overflow:hidden;
 }
 .hero-names{
-  font-family:'Great Vibes',cursive;
+  font-family:var(--script-font);
   font-size:clamp(3.8rem,14vw,9rem);
   font-weight:400;color:#fff;
   letter-spacing:0.02em;text-align:center;line-height:1.05;
@@ -66,14 +75,14 @@ body{
 }
 .hero-amp{
   display:block;
-  font-family:'Great Vibes',cursive;
+  font-family:var(--script-font);
   font-size:clamp(2.6rem,6.5vw,2.8rem);
   color:#fff;opacity:0.95;
   text-shadow:0 0 20px rgba(255,255,255,0.9);
   margin:-4px 0;text-align:center;
 }
 .hero-date{
-  font-family:'Great Vibes',cursive;
+  font-family:var(--script-font);
   font-size:clamp(1.6rem,5vw,2.6rem);
   color:#fff;font-weight:bold;
   letter-spacing:0.05em;margin-top:0.2rem;
@@ -82,14 +91,15 @@ body{
   position:relative;z-index:2;
 }
 .hero-tagline{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:clamp(1.6rem,5vw,2.6rem);
+  font-family:var(--body-font);
+  font-size:clamp(1.1rem,4vw,1.5rem);
   color:rgba(255,255,255,0.92);text-align:center;
-  font-weight:bold;
-  line-height:1.85;max-width:480px;margin-top:0.9rem;
+  font-weight:400;font-style:normal;
+  line-height:1.6;max-width:480px;margin-top:0.9rem;
   text-shadow:1px 1px 10px rgba(0,0,0,1),0 0 30px rgba(0,0,0,0.8);
   animation:fadeDown 1.2s 0.3s ease both;
   position:relative;z-index:2;
+  word-break:keep-all;overflow-wrap:break-word;
 }
 .hero-spacer{flex:1}
 
@@ -114,11 +124,12 @@ body{
   display:flex;flex-direction:column;align-items:center;gap:4px;
   animation:bobLantern 2.4s ease-in-out infinite;
 }
-.scroll-hint-wrap span{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;color:rgba(240,217,138,0.55);text-transform:uppercase;}
+.scroll-hint-wrap span{font-family:var(--title-font);font-size:0.65rem;letter-spacing:0.15em;color:rgba(240,217,138,0.55);text-transform:uppercase;}
 @keyframes bobLantern{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
+/* ─── SECTIONS ─── */
 .section{padding:2rem 1.2rem;max-width:660px;margin:0 auto}
 
 .glass{
@@ -137,14 +148,41 @@ body{
 .glass::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--lavender),var(--gold),var(--hair-gold),var(--gold),var(--lavender),transparent);border-radius:22px 22px 0 0;}
 .glass::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(179,136,216,0.4),rgba(201,168,76,0.3),rgba(179,136,216,0.4),transparent);border-radius:0 0 22px 22px;}
 
+/* ─── TYPOGRAPHY SISTEMA ─── */
 .section-icon{display:block;width:52px;height:52px;margin:0 auto 0.5rem;filter:drop-shadow(0 0 10px rgba(201,168,76,0.6)) drop-shadow(0 0 4px rgba(179,136,216,0.4));}
-.section-title{font-family:'Cinzel',serif;font-size:clamp(1.2rem,4vw,1.6rem);color:var(--gold-light);text-align:center;letter-spacing:0.1em;margin-bottom:0.2rem;text-shadow:0 0 20px rgba(201,168,76,0.5)}
-/* ── NIENTE CORSIVO nei sottotitoli sezione ── */
-.section-subtitle{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.1rem;color:var(--lavender);text-align:center;margin-bottom:1.2rem}
-.section-line{width:140px;height:26px;margin:0.6rem auto 1.2rem;display:block;background:none;}
-/* ── TESTO BOX più grande, senza corsivo ── */
-.section-body{font-size:1.1rem;line-height:1.9;color:rgba(255,255,255,0.9);text-align:center;font-style:normal}
 
+.section-title{
+  font-family:var(--title-font);
+  font-size:clamp(1.15rem,3.5vw,1.5rem);
+  color:var(--gold-light);
+  text-align:center;
+  letter-spacing:0.08em;
+  margin-bottom:0.2rem;
+  text-shadow:0 0 20px rgba(201,168,76,0.5);
+}
+.section-subtitle{
+  font-family:var(--body-font);
+  font-style:normal;
+  font-size:1.05rem;
+  color:var(--lavender);
+  text-align:center;
+  margin-bottom:1.2rem;
+  line-height:1.5;
+}
+.section-line{width:140px;height:26px;margin:0.6rem auto 1.2rem;display:block;background:none;}
+
+.section-body{
+  font-family:var(--body-font);
+  font-size:1.05rem;
+  line-height:1.65;
+  color:rgba(255,255,255,0.9);
+  text-align:center;
+  font-style:normal;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+
+/* ─── BOX FINALMENTE ─── */
 .box-finalmente{
   background:
     radial-gradient(circle 6px at 9px 9px, rgba(201,168,76,0.48) 55%, transparent 55%),
@@ -159,17 +197,66 @@ body{
 }
 .box-finalmente::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--lavender),var(--gold),var(--rose),var(--gold),var(--lavender),transparent);}
 .box-finalmente .big-lantern{display:block;margin:0 auto 0.7rem;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(248,232,124,0.7)) drop-shadow(0 0 8px rgba(201,168,76,0.5));}
-.box-finalmente h2{font-family:'Cinzel',serif;font-size:clamp(1.5rem,5vw,2.1rem);letter-spacing:0.06em;color:var(--gold-light);margin-bottom:1rem;text-shadow:0 0 30px rgba(201,168,76,0.5)}
-/* ── niente corsivo nel box finalmente ── */
-.box-finalmente p{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:clamp(1.05rem,2.8vw,1.25rem);color:rgba(255,255,255,0.88);line-height:1.9;max-width:420px;margin:0 auto}
+.box-finalmente h2{
+  font-family:var(--title-font);
+  font-size:clamp(1.4rem,4.5vw,2rem);
+  letter-spacing:0.06em;
+  color:var(--gold-light);
+  margin-bottom:1rem;
+  text-shadow:0 0 30px rgba(201,168,76,0.5);
+}
+.box-finalmente p{
+  font-family:var(--body-font);
+  font-style:normal;
+  font-size:1.05rem;
+  color:rgba(255,255,255,0.88);
+  line-height:1.65;
+  max-width:420px;
+  margin:0 auto;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
 
+/* ─── COUNTDOWN ─── */
 .date-pills{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
-.date-pill{background:rgba(107,45,139,0.22);border:1px solid rgba(179,136,216,0.45);border-radius:50px;padding:0.55rem 1.2rem;font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--gold-light)}
+.date-pill{
+  background:rgba(107,45,139,0.22);
+  border:1px solid rgba(179,136,216,0.45);
+  border-radius:50px;
+  padding:0.5rem 1.1rem;
+  font-family:var(--body-font);
+  font-size:1.05rem;
+  color:var(--gold-light);
+  line-height:1.3;
+}
 .countdown{display:flex;gap:0.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.3rem}
-.cd-unit{text-align:center;background:rgba(107,45,139,0.18);border:1px solid rgba(179,136,216,0.32);border-radius:12px;padding:0.7rem 1rem;min-width:65px}
-.cd-num{font-family:'Cinzel',serif;font-size:1.85rem;font-weight:600;color:var(--gold-light);display:block;line-height:1;text-shadow:0 0 20px rgba(201,168,76,0.6)}
-.cd-label{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:0.25rem}
+.cd-unit{
+  text-align:center;
+  background:rgba(107,45,139,0.18);
+  border:1px solid rgba(179,136,216,0.32);
+  border-radius:12px;
+  padding:0.7rem 1rem;
+  min-width:65px;
+}
+.cd-num{
+  font-family:var(--title-font);
+  font-size:1.85rem;
+  font-weight:600;
+  color:var(--gold-light);
+  display:block;
+  line-height:1;
+  text-shadow:0 0 20px rgba(201,168,76,0.6);
+}
+.cd-label{
+  font-family:var(--body-font);
+  font-size:0.72rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.55);
+  margin-top:0.25rem;
+}
 
+/* ─── MAP ─── */
 .map-wrap{position:relative;border-radius:0 0 6px 6px;overflow:hidden}
 .map-wrap svg{display:block;width:100%;height:auto}
 
@@ -177,21 +264,23 @@ body{
   display:inline-flex;align-items:center;justify-content:center;gap:5px;
   padding:7px 14px;border-radius:50px;
   background:rgba(107,45,139,0.18);border:1px solid rgba(179,136,216,0.4);
-  color:#f0d98a;font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.12em;
+  color:#f0d98a;font-family:var(--title-font);font-size:0.7rem;letter-spacing:0.12em;
   text-transform:uppercase;text-decoration:none;transition:all 0.3s ease;
 }
 .maps-btn:hover{background:rgba(107,45,139,0.32);transform:translateY(-1px)}
 
+/* ─── TIMELINE ─── */
 .timeline{position:relative;padding-left:2.4rem;margin-top:0.5rem}
 .timeline::before{content:'';position:absolute;left:0.85rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--lavender),var(--gold),var(--lavender))}
-.tl-item{position:relative;margin-bottom:1.3rem}
+.tl-item{position:relative;margin-bottom:1.2rem}
 .tl-item:last-child{margin-bottom:0}
 .tl-dot{position:absolute;left:-2.08rem;top:0.2rem;width:14px;height:14px;background:var(--gold);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);box-shadow:0 0 8px rgba(201,168,76,0.8);}
-.tl-time{font-family:'Cinzel',serif;font-size:0.92rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.08rem}
-.tl-title{font-size:1.05rem;color:rgba(255,255,255,0.88);line-height:1.55}
+.tl-time{font-family:var(--title-font);font-size:0.88rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.05rem}
+.tl-title{font-family:var(--body-font);font-size:1.05rem;color:rgba(255,255,255,0.88);line-height:1.5}
 
+/* ─── BUTTONS ─── */
 .btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.4rem}
-.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:50px;font-family:'Cinzel',serif;font-size:0.82rem;letter-spacing:0.06em;text-decoration:none;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:50px;font-family:var(--title-font);font-size:0.82rem;letter-spacing:0.06em;text-decoration:none;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
 .btn-primary{background:rgba(107,45,139,0.45);border:1px solid rgba(179,136,216,0.6);color:#fff;backdrop-filter:blur(6px)}
 .btn-gold{background:rgba(201,168,76,0.35);border:1px solid var(--gold);color:var(--gold-light);backdrop-filter:blur(6px)}
@@ -222,23 +311,97 @@ body{
 .video-deco-flowers{position:absolute;pointer-events:none;opacity:0.55;}
 .video-deco-flowers--left{left:-2px;top:50%;transform:translateY(-50%)}
 .video-deco-flowers--right{right:-2px;top:50%;transform:translateY(-50%)}
-/* ── niente corsivo nella caption video ── */
-.video-caption{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.02rem;color:rgba(255,255,255,0.65);margin-top:0.8rem;letter-spacing:0.04em;}
+.video-caption{
+  font-family:var(--body-font);
+  font-style:normal;
+  font-size:1rem;
+  color:rgba(255,255,255,0.65);
+  margin-top:0.8rem;
+  letter-spacing:0.04em;
+  line-height:1.5;
+}
+.video-quote{
+  font-family:var(--body-font);
+  font-size:1.05rem;
+  color:rgba(255,255,255,0.75);
+  margin-top:1rem;
+  line-height:1.6;
+  border-top:1px solid rgba(201,168,76,0.2);
+  padding-top:1rem;
+}
+.video-quote em{color:var(--gold-light);font-style:italic;}
 
-.regalo-inner{background:rgba(107,45,139,0.12);border:1px dashed rgba(179,136,216,0.45);border-radius:12px;padding:1.4rem;text-align:center;margin-top:1rem}
-/* ── niente corsivo nel regalo ── */
-.regalo-inner p{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.1rem;color:rgba(255,255,255,0.85);line-height:1.8;margin-bottom:1.2rem}
+/* countdown separator dentro save the date */
+.std-divider{
+  width:80px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,0.4),transparent);
+  margin:1.2rem auto 0;
+}
 
-footer{position:relative;z-index:1;background:rgba(5,2,10,0.75);backdrop-filter:blur(16px);text-align:center;padding:2.5rem 1.5rem;border-top:1px solid rgba(201,168,76,0.2)}
-footer .footer-names{font-family:'Cinzel',serif;font-size:1.25rem;letter-spacing:0.12em;color:var(--gold-light);margin-bottom:0.4rem}
-footer p{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.05rem;color:rgba(255,255,255,0.6)}
+/* ─── REGALO ─── */
+.regalo-inner{
+  background:rgba(107,45,139,0.12);
+  border:1px dashed rgba(179,136,216,0.45);
+  border-radius:12px;
+  padding:1.4rem;
+  text-align:center;
+  margin-top:1rem;
+}
+.regalo-inner p{
+  font-family:var(--body-font);
+  font-style:normal;
+  font-size:1.05rem;
+  color:rgba(255,255,255,0.85);
+  line-height:1.65;
+  margin-bottom:1.2rem;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+
+/* ─── FOOTER ─── */
+footer{
+  position:relative;z-index:1;
+  background:rgba(5,2,10,0.75);
+  backdrop-filter:blur(16px);
+  text-align:center;
+  padding:2.5rem 1.5rem;
+  border-top:1px solid rgba(201,168,76,0.2);
+}
+footer .footer-names{
+  font-family:var(--title-font);
+  font-size:1.25rem;
+  letter-spacing:0.12em;
+  color:var(--gold-light);
+  margin-bottom:0.4rem;
+}
+footer p{
+  font-family:var(--body-font);
+  font-style:normal;
+  font-size:1.05rem;
+  color:rgba(255,255,255,0.6);
+  line-height:1.6;
+}
 .footer-lanterns{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1rem;opacity:0.55}
-.footer-lanterns span{font-family:'Great Vibes',cursive;font-size:1.4rem;color:var(--rose)}
+.footer-lanterns span{font-family:var(--script-font);font-size:1.4rem;color:var(--rose)}
 
+/* ─── REVEAL ─── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-@media(max-width:480px){.section{padding:1.5rem 0.9rem}.glass{padding:1.8rem 1.2rem}}
+/* ─── MOBILE ─── */
+@media(max-width:480px){
+  .section{padding:1.2rem 0.8rem}
+  .glass{padding:1.6rem 1.1rem}
+  .video-section-box{padding:1.6rem 1.1rem 1.8rem}
+  .box-finalmente{padding:2rem 1.2rem}
+  .section-body{font-size:1rem;line-height:1.55}
+  .box-finalmente p{font-size:1rem;line-height:1.55}
+  .tl-title{font-size:1rem}
+  .date-pill{font-size:1rem;padding:0.45rem 0.9rem}
+  .cd-num{font-size:1.6rem}
+  .regalo-inner p{font-size:1rem}
+  .video-quote{font-size:1rem}
+}
 </style>
 </head>
 <body>
@@ -253,7 +416,7 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.05
   <h1 class="hero-names">Erika<span class="hero-amp">&amp;</span>Elisabetta</h1>
   <p class="hero-date">&#9825; &nbsp;4 Settembre 2026&nbsp; &#9825;</p>
   <p class="hero-tagline">
-    Dopo anni di sogni, avventure e magia condivisa,<br>
+    Dopo anni di sogni, avventure e magia condivisa,
     il nostro racconto più bello sta per cominciare ✨
   </p>
   <div class="hero-spacer"></div>
@@ -286,16 +449,17 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.05
     </svg>
     <h2>Finalmente ci sposiamo!</h2>
     <p>
-      Come in ogni favola Disney che si rispetti,<br>
-      c'è un momento in cui due cuori si trovano<br>
-      e decidono di non lasciarsi più. 🌹✨<br><br>
-      Questo è il nostro momento — e vogliamo viverlo<br>
+      Come in ogni favola Disney che si rispetti,
+      c'è un momento in cui due cuori si trovano
+      e decidono di non lasciarsi più. 🌹✨
+      <br><br>
+      Questo è il nostro momento — e vogliamo viverlo
       insieme a voi, le persone più speciali della nostra storia. 🏰💛
     </p>
   </div>
 </div>
 
-<!-- SAVE THE DATE VIDEO -->
+<!-- SAVE THE DATE + QUANDO (unificati) -->
 <div class="section reveal">
   <div class="video-section-box">
     <svg width="32" height="44" viewBox="0 0 36 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
@@ -325,8 +489,8 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.05
       </svg>
     </div>
     <p class="section-body" style="margin-bottom:1.2rem">
-      Questo è il Parco Gambrinus — il luogo incantato<br>
-      dove la nostra storia scritta nelle stelle<br>
+      Questo è il Parco Gambrinus — il luogo incantato
+      dove la nostra storia scritta nelle stelle
       diventerà realtà. 🌿🏰✨
     </p>
     <div class="video-frame-wrap">
@@ -359,42 +523,14 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.05
       </video>
     </div>
     <p class="video-caption">🌿 Parco Gambrinus · San Polo di Piave (TV) · 4 Settembre 2026 🌿</p>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(255,255,255,0.75);margin-top:1rem;line-height:1.8;border-top:1px solid rgba(201,168,76,0.2);padding-top:1rem;">
-      <em style="color:var(--gold-light)">"Ho un sogno…"</em><br>
+    <p class="video-quote">
+      <em>"Ho un sogno…"</em><br>
       e quel sogno porta il tuo nome. 💛
     </p>
-  </div>
-</div>
 
-<!-- QUANDO -->
-<div class="section reveal">
-  <div class="glass">
-    <svg class="section-icon" viewBox="0 0 36 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <line x1="18" y1="0" x2="18" y2="7" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-      <rect x="9" y="7" width="18" height="5" rx="2" fill="#c9a84c"/>
-      <path d="M10,12 Q7.5,20 7.5,29 Q7.5,38 10,43 L26,43 Q28.5,38 28.5,29 Q28.5,20 26,12 Z" fill="#f8e87c" opacity="0.9"/>
-      <path d="M10,12 Q7.5,20 7.5,29 Q7.5,38 10,43 L26,43 Q28.5,38 28.5,29 Q28.5,20 26,12 Z" stroke="#c9a84c" stroke-width="0.9" fill="none"/>
-      <line x1="18" y1="12" x2="18" y2="43" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
-      <ellipse cx="18" cy="28" rx="6.5" ry="9" fill="white" opacity="0.3"/>
-      <path d="M11.5,43 Q14.5,49 18,51 Q21.5,49 24.5,43 Z" fill="#c9a84c" opacity="0.78"/>
-    </svg>
-    <h2 class="section-title">Quando</h2>
-    <div class="section-line">
-      <svg viewBox="0 0 140 26" xmlns="http://www.w3.org/2000/svg" width="140" height="26" aria-hidden="true">
-        <line x1="0" y1="13" x2="54" y2="13" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
-        <line x1="86" y1="13" x2="140" y2="13" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
-        <circle cx="70" cy="13" r="5.5" fill="#c9a84c"/>
-        <line x1="70" y1="1" x2="70" y2="7" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="70" y1="19" x2="70" y2="25" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="58" y1="13" x2="64" y2="13" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="76" y1="13" x2="82" y2="13" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="61.8" y1="4.8" x2="66" y2="9" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
-        <line x1="78.2" y1="4.8" x2="74" y2="9" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
-        <line x1="61.8" y1="21.2" x2="66" y2="17" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
-        <line x1="78.2" y1="21.2" x2="74" y2="17" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="date-pills">
+    <!-- COUNTDOWN integrato -->
+    <div class="std-divider"></div>
+    <div class="date-pills" style="margin-top:1.2rem">
       <div class="date-pill">🗓 Venerdì 4 Settembre 2026</div>
       <div class="date-pill">🕓 dalle ore 16:00</div>
     </div>
@@ -406,7 +542,7 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.05
     <p class="section-body" style="margin-top:1rem;color:var(--lavender)">Segnati la data… e preparati alla magia! ✨</p>
   </div>
 </div>
-  
+
 <!-- DOVE -->
 <div class="section reveal">
   <div class="glass" style="padding:0;overflow:hidden;">
@@ -420,16 +556,16 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.05
         <rect x="14" y="30" width="12" height="13" rx="6 6 0 0" fill="#f8e87c" opacity="0.88"/>
         <rect x="14" y="44" width="12" height="8" rx="4 4 0 0" fill="#2a0840"/>
       </svg>
-      <span class="map-label" style="padding:0;font-family:'Cinzel',serif;font-size:0.95rem;color:var(--gold-light);letter-spacing:0.08em;">Dove ci sposiamo</span>
+      <span style="font-family:var(--title-font);font-size:0.95rem;color:var(--gold-light);letter-spacing:0.08em;">Dove ci sposiamo</span>
     </div>
     <div style="padding:0 1.8rem 0.6rem;">
       <p class="section-subtitle" style="margin-bottom:0.4rem">Il luogo della nostra favola</p>
       <p class="section-body" style="margin-bottom:0.5rem">
-        <strong style="color:var(--gold-light);font-family:'Cinzel',serif;letter-spacing:0.06em">Parco Gambrinus 🌳</strong><br>
-        <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(255,255,255,0.7)">Via Capitello, 18 — San Polo di Piave (TV)</span>
+        <strong style="color:var(--gold-light);font-family:var(--title-font);letter-spacing:0.06em">Parco Gambrinus 🌳</strong><br>
+        <span style="font-family:var(--body-font);font-size:1.05rem;color:rgba(255,255,255,0.7)">Via Capitello, 18 — San Polo di Piave (TV)</span>
       </p>
       <p class="section-body" style="margin-bottom:1rem">
-        Un parco incantato, tra il verde e la luce del tramonto —<br>
+        Un parco incantato, tra il verde e la luce del tramonto —
         lo scenario perfetto per il giorno più magico della nostra vita. 🌅🍃
       </p>
     </div>
@@ -551,7 +687,8 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.05
         <line x1="78.2" y1="21.2" x2="74" y2="17" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
       </svg>
     </div>
-    <p class="section-body" style="margin-bottom:1.4rem">Una giornata piena di magia, emozioni e amore…<br>proprio come in una favola Disney 💫🏰</p>
+    <p class="section-body" style="margin-bottom:1.4rem">Una giornata piena di magia, emozioni e amore,
+    proprio come in una favola Disney 💫🏰</p>
     <div class="timeline">
       <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16:00</div><div class="tl-title">🌟 Arrivo degli ospiti — benvenuti nel regno!</div></div>
       <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:00</div><div class="tl-title">🏰 Cerimonia — il momento più atteso</div></div>
@@ -639,13 +776,15 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.05
       </svg>
     </div>
     <p class="section-body">
-      La vostra presenza è già il regalo più bello.<br>
-      Se però volete farci un dono,<br>
-      contribuirete al nostro <strong style="color:var(--gold-light)">viaggio di nozze</strong> —<br>
+      La vostra presenza è già il regalo più bello.
+      Se però volete farci un dono,
+      contribuirete al nostro <strong style="color:var(--gold-light)">viaggio di nozze</strong> —
       la nostra prima avventura da mogli ✈️🌍💛
     </p>
     <div class="regalo-inner">
-      <p>🏮 Per contribuire, usa il link qui sotto.<br>Ogni piccolo gesto ci aiuterà a costruire<br>ricordi meravigliosi nel mondo 🗺️✨</p>
+      <p>🏮 Per contribuire, usa il link qui sotto.
+      Ogni piccolo gesto ci aiuterà a costruire
+      ricordi meravigliosi nel mondo 🗺️✨</p>
       <a class="btn btn-gold" href="INSERISCI_LINK_REGALO" target="_blank">🎁 Contribuisci al nostro viaggio</a>
     </div>
   </div>
@@ -675,13 +814,12 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.05
 </div>
 
 <script>
-// iOS background fix
 (function(){
   const img = document.querySelector('.bg-fixed img');
   if(img){ window.addEventListener('resize', () => img.style.transform='translateZ(0)'); }
 })();
 
-// ─── FLOATING LANTERNS ───
+// FLOATING LANTERNS
 (function(){
   const hero = document.querySelector('.hero');
   const lanterns = [
@@ -717,7 +855,7 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:1.05
   hero.insertBefore(container, hero.firstChild);
 })();
 
-// ─── COUNTDOWN (senza secondi) ───
+// COUNTDOWN
 function updateCD(){
   const diff = new Date('2026-09-04T16:00:00') - new Date();
   if(diff <= 0){
@@ -732,7 +870,7 @@ function updateCD(){
 updateCD();
 setInterval(updateCD, 30000);
 
-// ─── REVEAL ON SCROLL ───
+// REVEAL ON SCROLL
 const obs = new IntersectionObserver(es => {
   es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, {threshold:0.08});
