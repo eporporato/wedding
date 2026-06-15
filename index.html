@@ -8,9 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
 
 <style>
-/* ====== TUO CSS INTEGRALE (INVARIATO) ====== */
-/* (NON TAGLIO NIENTE PER SICUREZZA DEL LAYOUT) */
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
@@ -19,150 +16,193 @@
   --rose:#e8a0b0;
   --lavender:#b388d8;
   --purple-deep:#2d0a4e;
-  --rapunzel-purple:#6b2d8b;
-  --hair-gold:#f5d26c;
-  --glass:rgba(42,8,72,0.48);
-  --glass-border:rgba(201,168,76,0.38);
   --body-font:'Cormorant Garamond',serif;
   --title-font:'Cinzel',serif;
   --script-font:'Great Vibes',cursive;
 }
 
-/* --- TUTTO IL TUO CSS ORIGINALE INVARIATO --- */
+body{
+  font-family:var(--body-font);
+  background:#0a0410;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:60vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:3rem 1rem;
+}
+
+.hero-names{
+  font-family:var(--script-font);
+  font-size:4rem;
+  color:#fff;
+}
+
+.hero-date{
+  margin-top:1rem;
+  font-family:var(--script-font);
+  font-size:2rem;
+  color:var(--gold-light);
+}
+
+/* ===== SECTIONS ===== */
+.section{
+  max-width:900px;
+  margin:0 auto;
+  padding:2rem 1rem;
+}
+
+.glass{
+  background:rgba(42,8,72,.5);
+  border:1px solid rgba(201,168,76,.3);
+  border-radius:20px;
+  padding:2rem;
+}
+
+/* ===== GIFTS ===== */
+.gift-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:1rem;
+  margin-top:1rem;
+}
+
+.gift-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(201,168,76,.25);
+  border-radius:16px;
+  padding:1rem;
+  text-align:center;
+}
+
+.btn{
+  background:var(--gold);
+  border:none;
+  padding:.6rem 1rem;
+  border-radius:30px;
+  cursor:pointer;
+  font-family:var(--title-font);
+}
+
+/* ===== MODAL ===== */
+#giftModal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  justify-content:center;
+  align-items:center;
+  padding:1rem;
+  z-index:9999;
+}
+
+.modal-box{
+  background:rgba(42,8,72,.95);
+  border:1px solid var(--gold);
+  border-radius:20px;
+  padding:2rem;
+  width:100%;
+  max-width:420px;
+}
+
+.small-label{
+  font-size:.75rem;
+  opacity:.6;
+  text-transform:uppercase;
+}
+
+/* ===== IBAN FIX ===== */
+.iban-box{
+  margin-top:1rem;
+  padding:1rem;
+  border-radius:12px;
+  border:1px solid rgba(201,168,76,.3);
+  background:rgba(255,255,255,.05);
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- ================= PAGE ================= -->
-<div class="page">
+<div class="hero">
+  <div class="hero-names">Erika & Elisabetta</div>
+  <div class="hero-date">4 Settembre 2026</div>
+</div>
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <h1 class="hero-names">Erika<span class="hero-amp">&amp;</span>Elisabetta</h1>
-  <p class="hero-date">♡ 4 Settembre 2026 ♡</p>
-</section>
-
-<!-- ================= REGALO ================= -->
-<div class="section reveal">
+<!-- GIFTS -->
+<div class="section">
   <div class="glass">
 
-    <h2 class="section-title">Un pensiero per noi</h2>
+    <h2>Un pensiero per noi</h2>
 
     <div class="gift-grid">
       <div class="gift-card">
-        <div style="font-size:2rem">✈️</div>
-        <h4>Viaggio di nozze</h4>
-        <button class="btn btn-gold" onclick="openGiftModal(0)">Scopri</button>
+        ✈️<br><br>Viaggio di nozze<br><br>
+        <button class="btn" onclick="openGift(0)">Scopri</button>
       </div>
 
       <div class="gift-card">
-        <div style="font-size:2rem">🏰</div>
-        <h4>Disneyland Paris</h4>
-        <button class="btn btn-gold" onclick="openGiftModal(1)">Scopri</button>
+        🏰<br><br>Disneyland<br><br>
+        <button class="btn" onclick="openGift(1)">Scopri</button>
       </div>
 
       <div class="gift-card">
-        <div style="font-size:2rem">🖼️</div>
-        <h4>Cornice digitale</h4>
-        <button class="btn btn-gold" onclick="openGiftModal(2)">Scopri</button>
+        🖼️<br><br>Casa<br><br>
+        <button class="btn" onclick="openGift(2)">Scopri</button>
       </div>
 
       <div class="gift-card">
-        <div style="font-size:2rem">🎨</div>
-        <h4>Quadro personalizzato</h4>
-        <button class="btn btn-gold" onclick="openGiftModal(3)">Scopri</button>
+        🎨<br><br>Arte<br><br>
+        <button class="btn" onclick="openGift(3)">Scopri</button>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ================= POPUP MODAL ================= -->
-<div id="giftModal"
-     style="display:none;position:fixed;inset:0;background:rgba(5,2,10,.88);z-index:9999;align-items:center;justify-content:center;padding:1rem">
+<!-- MODAL -->
+<div id="giftModal" onclick="outsideClose(event)">
+  <div class="modal-box">
 
-  <div style="
-      background:rgba(42,8,72,.97);
-      border:1px solid var(--gold);
-      border-radius:22px;
-      padding:2rem;
-      max-width:430px;
-      width:100%;
-      text-align:center;">
+    <div id="mTag"></div>
+    <h2 id="mTitle"></h2>
+    <p id="mDesc"></p>
 
-    <div id="gModalTag" style="color:var(--gold-light);margin-bottom:.5rem"></div>
-    <h3 id="gModalTitle" style="color:#fff;margin-bottom:1rem"></h3>
-    <p id="gModalDesc" style="color:rgba(255,255,255,.85);margin-bottom:1.2rem"></p>
+    <!-- IBAN FIX COMPLETO -->
+    <div class="iban-box">
 
-    <!-- ================= IBAN FIX ================= -->
-    <div style="
-        background:rgba(255,255,255,.05);
-        border:1px solid rgba(201,168,76,.35);
-        border-radius:14px;
-        padding:1rem;
-        margin-bottom:1rem;
-        text-align:left;">
+      <div class="small-label">Intestatario</div>
+      <div style="margin-bottom:.5rem">Elisabetta Russo</div>
 
-      <div style="color:var(--gold-light);font-family:var(--title-font);margin-bottom:.6rem;">
-        Coordinate bancarie
-      </div>
-
-      <div style="font-size:.8rem;color:rgba(255,255,255,.6);text-transform:uppercase;">
-        Intestatario
-      </div>
-
-      <div style="color:#fff;margin-bottom:.8rem;">
-        Elisabetta Russo
-      </div>
-
-      <div style="font-size:.8rem;color:rgba(255,255,255,.6);text-transform:uppercase;">
-        IBAN
-      </div>
-
-      <div id="gModalIban" style="color:#fff;margin-top:.2rem;">
-        IT32 U062 3002 0410 0001 5606 003
-      </div>
+      <div class="small-label">IBAN</div>
+      <div id="mIban">IT32 U062 3002 0410 0001 5606 003</div>
 
     </div>
 
-    <!-- CAUSALE -->
-    <div style="
-        background:rgba(255,255,255,.05);
-        border:1px solid rgba(201,168,76,.25);
-        border-radius:14px;
-        padding:1rem;
-        margin-bottom:1.2rem;
-        text-align:left;">
-
-      <div style="color:var(--gold-light);font-family:var(--title-font);margin-bottom:.6rem;">
-        Causale
-      </div>
-
-      <div id="gModalCausale" style="color:#fff;line-height:1.6;"></div>
-
+    <div class="iban-box">
+      <div class="small-label">Causale</div>
+      <div id="mCausale"></div>
     </div>
 
-    <button class="btn btn-gold" style="width:100%" onclick="copyIBAN()">
-      📋 Copia IBAN
-    </button>
+    <br>
 
-    <button class="btn btn-gold" style="width:100%;margin-top:.6rem" onclick="copyCausale()">
-      📝 Copia causale
-    </button>
-
-    <button class="btn btn-dark" style="width:100%;margin-top:.6rem" onclick="closeGiftModal()">
-      Chiudi
-    </button>
+    <button class="btn" onclick="copyIBAN()">Copia IBAN</button>
+    <button class="btn" onclick="copyCausale()">Copia causale</button>
+    <button class="btn" onclick="closeModal()">Chiudi</button>
 
   </div>
 </div>
 
-</div>
-
-<!-- ================= SCRIPT ================= -->
 <script>
-const giftData = [
+const gifts = [
   {
     tag:"✈️ Viaggio di nozze",
     title:"Contributo viaggio di nozze",
@@ -170,40 +210,44 @@ const giftData = [
     causale:"Regalo Nozze Erika e Elisabetta - Viaggio di Nozze"
   },
   {
-    tag:"🏰 Disneyland Paris",
+    tag:"🏰 Disneyland",
     title:"Esperienza Disney",
     desc:"Il nostro posto del cuore.",
     causale:"Regalo Nozze Erika e Elisabetta - Disneyland Paris"
   },
   {
-    tag:"🖼️ Cornice digitale",
-    title:"Ricordi",
-    desc:"Per custodire i nostri momenti.",
-    causale:"Regalo Nozze Erika e Elisabetta - Cornice Digitale"
+    tag:"🖼️ Casa",
+    title:"Per la nostra casa",
+    desc:"Ricordi e momenti.",
+    causale:"Regalo Nozze Erika e Elisabetta - Casa"
   },
   {
-    tag:"🎨 Quadro personalizzato",
-    title:"Arte",
-    desc:"Un ricordo unico.",
-    causale:"Regalo Nozze Erika e Elisabetta - Quadro Personalizzato"
+    tag:"🎨 Arte",
+    title:"Quadro personalizzato",
+    desc:"Un’opera unica.",
+    causale:"Regalo Nozze Erika e Elisabetta - Arte"
   }
 ];
 
-let currentGift = null;
+let current = null;
 
-function openGiftModal(i){
-  currentGift = giftData[i];
+function openGift(i){
+  current = gifts[i];
 
-  document.getElementById('gModalTag').innerText = currentGift.tag;
-  document.getElementById('gModalTitle').innerText = currentGift.title;
-  document.getElementById('gModalDesc').innerText = currentGift.desc;
-  document.getElementById('gModalCausale').innerText = currentGift.causale;
+  document.getElementById("mTag").innerText = current.tag;
+  document.getElementById("mTitle").innerText = current.title;
+  document.getElementById("mDesc").innerText = current.desc;
+  document.getElementById("mCausale").innerText = current.causale;
 
-  document.getElementById('giftModal').style.display='flex';
+  document.getElementById("giftModal").style.display="flex";
 }
 
-function closeGiftModal(){
-  document.getElementById('giftModal').style.display='none';
+function closeModal(){
+  document.getElementById("giftModal").style.display="none";
+}
+
+function outsideClose(e){
+  if(e.target.id === "giftModal") closeModal();
 }
 
 function copyIBAN(){
@@ -212,15 +256,9 @@ function copyIBAN(){
 }
 
 function copyCausale(){
-  navigator.clipboard.writeText(currentGift.causale);
+  navigator.clipboard.writeText(current.causale);
   alert("Causale copiata!");
 }
-
-window.onclick = function(e){
-  if(e.target.id === "giftModal"){
-    closeGiftModal();
-  }
-};
 </script>
 
 </body>
