@@ -444,6 +444,8 @@ footer p{
   .video-quote{font-size:1rem}
   .hotel-inner{padding:1.1rem}
 }
+
+.gift-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1.2rem}.gift-card{background:rgba(10,4,22,.45);border:1px solid rgba(201,168,76,.25);border-radius:16px;padding:1rem;text-align:center}.gift-card h4{color:var(--gold-light);font-family:var(--title-font);font-size:.9rem;margin:.5rem 0}.gift-card p{font-size:.95rem;color:rgba(255,255,255,.75)}@keyframes giftPop{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
 </style>
 </head>
 <body>
@@ -719,7 +721,7 @@ footer p{
 
     <div class="hotel-inner">
       <div class="hotel-name">🏨 Hotel Villa Maternini</div>
-      <div class="hotel-address" style="margin-top:0.25rem">San Polo di Piave (TV)</div>
+      <div class="hotel-address" style="margin-top:0.25rem"> Via Pier Antonio Mutti, 7, Vazzola (TV)</div>
       <p class="hotel-note">
         Tutti i dettagli pratici — orari del check-in, informazioni sulla camera
         e ogni altra cosa utile — vi verranno comunicati prossimamente. 💌
@@ -754,7 +756,7 @@ footer p{
       <polygon points="34,44 36,47 34,50 32,47" fill="#b388d8" opacity="0.45"/>
     </svg>
     <h2 class="section-title">Come sarà la giornata</h2>
-    <p class="section-subtitle">Una storia scritta per voi</p>
+    <p class="section-subtitle"></p>
     <div class="section-line">
       <svg viewBox="0 0 140 26" xmlns="http://www.w3.org/2000/svg" width="140" height="26" aria-hidden="true">
         <line x1="0" y1="13" x2="54" y2="13" stroke="#c9a84c" stroke-width="0.8" stroke-opacity="0.5"/>
@@ -863,10 +865,15 @@ footer p{
       potrete così contribuire al nostro viaggio di nozze
       — la nostra prima avventura da mogli — o ad altri piccoli progetti per la nostra vita insieme. ✈️🌍🏡💛
     </p>
-    <div class="regalo-inner">
-      <p>🏮 Dai colore ai nostri sogni 🌸</p>
-      <a class="btn btn-gold" href="https://given2.us/E2" target="_blank">🎁 Visualizza la nostra Lista Nozze</a>
-    </div>
+    <div class="gift-grid">
+<div class="gift-card"><div style="font-size:2rem">✈️</div><h4>Viaggio di nozze</h4><button class="btn btn-gold" onclick="openGiftModal(0)">Scopri</button></div>
+<div class="gift-card"><div style="font-size:2rem">🏰</div><h4>Disneyland Paris</h4><button class="btn btn-gold" onclick="openGiftModal(1)">Scopri</button></div>
+<div class="gift-card"><div style="font-size:2rem">🖼️</div><h4>Cornice digitale</h4><button class="btn btn-gold" onclick="openGiftModal(2)">Scopri</button></div>
+<div class="gift-card"><div style="font-size:2rem">🎨</div><h4>Quadro personalizzato</h4><button class="btn btn-gold" onclick="openGiftModal(3)">Scopri</button></div>
+</div>
+<div class="regalo-inner">
+<p>🏮 Dai colore ai nostri sogni 🌸</p>
+</div>
   </div>
 </div>
 
@@ -890,6 +897,14 @@ footer p{
     </svg>
   </div>
 </footer>
+<div id="giftModal" style="display:none;position:fixed;inset:0;background:rgba(5,2,10,.88);z-index:9999;align-items:center;justify-content:center;padding:1rem">
+<div style="background:rgba(42,8,72,.97);border:1px solid var(--gold);border-radius:22px;padding:2rem;max-width:380px;width:100%;text-align:center">
+<div id="gModalTag"></div><h3 id="gModalTitle"></h3><p id="gModalDesc"></p>
+<p style="margin-top:1rem">IBAN: IT32 U062 3002 0410 0001 5606 003</p>
+<p id="gModalCausale"></p>
+<button id="gModalCopyBtn" class="btn btn-gold" onclick="copyCausale()">📋 Copia la causale</button>
+<button class="btn btn-dark" onclick="closeGiftModal()">Chiudi</button>
+</div></div>
 
 </div>
 <script>
@@ -954,6 +969,16 @@ const obs = new IntersectionObserver(es => {
   es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, {threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+const giftData=[
+{tag:"✈️ Viaggio di nozze",title:"Contributo al viaggio di nozze",desc:"La nostra prima avventura da mogli.",causale:"Regalo Nozze Erika e Elisabetta - Viaggio di Nozze"},
+{tag:"🏰 Esperienza Disney",title:"Disneyland Paris",desc:"Il nostro posto del cuore.",causale:"Regalo Nozze Erika e Elisabetta - Disneyland Paris"},
+{tag:"🖼️ Per la nostra casa",title:"Cornice digitale",desc:"Per custodire i nostri ricordi.",causale:"Regalo Nozze Erika e Elisabetta - Cornice Digitale"},
+{tag:"🎨 Arte personalizzata",title:"Quadro personalizzato",desc:"Un'opera unica.",causale:"Regalo Nozze Erika e Elisabetta - Quadro Personalizzato"}];
+function openGiftModal(i){let d=giftData[i];document.getElementById('gModalTag').innerText=d.tag;document.getElementById('gModalTitle').innerText=d.title;document.getElementById('gModalDesc').innerText=d.desc;document.getElementById('gModalCausale').innerText=d.causale;document.getElementById('giftModal').style.display='flex';}
+function closeGiftModal(){document.getElementById('giftModal').style.display='none';}
+function copyCausale(){navigator.clipboard.writeText(document.getElementById('gModalCausale').innerText);}
+
 </script>
 </body>
 </html>
