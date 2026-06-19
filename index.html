@@ -33,17 +33,16 @@ body{
   -webkit-text-size-adjust:100%;
 }
 
-body{
+.bg-fixed{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
   background-image:url('rapunzel.jpg');
   background-size:cover;
   background-position:center 10%;
-  background-attachment:fixed;
   background-repeat:no-repeat;
 }
-@supports (-webkit-touch-callout: none){
-  body{background-attachment:scroll;background-position:center top;}
-}
-.bg-fixed{position:fixed;inset:0;z-index:0;pointer-events:none;}
 .bg-fixed img{display:none;}
 .bg-fixed::after{
   content:'';position:absolute;inset:0;z-index:1;
@@ -340,15 +339,6 @@ body{
 .video-deco-flowers{position:absolute;pointer-events:none;opacity:0.55;}
 .video-deco-flowers--left{left:-2px;top:50%;transform:translateY(-50%)}
 .video-deco-flowers--right{right:-2px;top:50%;transform:translateY(-50%)}
-.video-caption{
-  font-family:var(--body-font);
-  font-style:normal;
-  font-size:1rem;
-  color:rgba(255,255,255,0.65);
-  margin-top:0.8rem;
-  letter-spacing:0.04em;
-  line-height:1.5;
-}
 .video-quote{
   font-family:var(--body-font);
   font-size:1.05rem;
@@ -493,7 +483,7 @@ footer p{
     <h2>Finalmente ci sposiamo!</h2>
     <p>
       Ci sono momenti in cui ci si guarda e si decide di camminare insieme per sempre. 🌸<br>
-      Questo è il nostro momento, e non vediamo l'ora di viverlo con voi, 
+      Questo è il nostro momento, e non vediamo l'ora di viverlo con voi,
       le persone che rendono unico il nostro cammino. ✨
     </p>
   </div>
@@ -712,7 +702,7 @@ footer p{
 
     <div class="hotel-inner">
       <div class="hotel-name">🏨 Hotel Villa Maternini</div>
-      <div class="hotel-address" style="margin-top:0.25rem"> Via Pier Antonio Mutti, 7, Vazzola (TV)</div>
+      <div class="hotel-address" style="margin-top:0.25rem">Via Pier Antonio Mutti, 7, Vazzola (TV)</div>
       <p class="hotel-note">
         Tutti i dettagli pratici — orari del check-in, informazioni sulla camera
         e ogni altra cosa utile — vi verranno comunicati prossimamente. 💌
@@ -763,7 +753,7 @@ footer p{
         <line x1="78.2" y1="21.2" x2="74" y2="17" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
       </svg>
     </div>
-    <p class="section-body" style="margin-bottom:1.4rem">Una giornata pensata per condividere emozioni, 
+    <p class="section-body" style="margin-bottom:1.4rem">Una giornata pensata per condividere emozioni,
       sorrisi e momenti speciali con le persone che amiamo. 💫</p>
     <div class="timeline">
       <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16:00</div><div class="tl-title">🌟 Arrivo degli ospiti 🏮 </div></div>
@@ -772,7 +762,7 @@ footer p{
       <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">20:00</div><div class="tl-title">🍽️ Cena 🕯️</div></div>
       <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">23:00</div><div class="tl-title">🎂 Taglio torta 🌸 </div></div>
       <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">23:30</div><div class="tl-title">💃 Si balla con l'accompagnamento di Leslie in the Cloud 🎶✨</div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">01:00</div><div class="tl-title">🌙 Fine serata  – stanchi ma felici!🏮</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">01:00</div><div class="tl-title">🌙 Fine serata – stanchi ma felici! 🏮</div></div>
     </div>
   </div>
 </div>
@@ -852,19 +842,19 @@ footer p{
     </div>
     <p class="section-body">
       Il regalo più grande sarà la vostra presenza 💛 <br>
-      Ma se desiderate contribuire alla nostra nuova vita insieme, abbiamo racchiuso i nostri desideri in una lista nozze online: 
+      Ma se desiderate contribuire alla nostra nuova vita insieme, abbiamo racchiuso i nostri desideri in una lista nozze online:
       potrete così contribuire al nostro viaggio di nozze
       — la nostra prima avventura da mogli — o ad altri piccoli progetti per la nostra vita insieme. ✈️🌍🏡💛
     </p>
     <div class="gift-grid">
-<div class="gift-card"><div style="font-size:2rem">✈️</div><h4>Viaggio di nozze</h4><button class="btn btn-gold" onclick="openGiftModal(0)">Scopri</button></div>
-<div class="gift-card"><div style="font-size:2rem">🏰</div><h4>Disneyland Paris</h4><button class="btn btn-gold" onclick="openGiftModal(1)">Scopri</button></div>
-<div class="gift-card"><div style="font-size:2rem">🖼️</div><h4>Cornice digitale</h4><button class="btn btn-gold" onclick="openGiftModal(2)">Scopri</button></div>
-<div class="gift-card"><div style="font-size:2rem">🎨</div><h4>Quadro personalizzato</h4><button class="btn btn-gold" onclick="openGiftModal(3)">Scopri</button></div>
-</div>
-<div class="regalo-inner">
-<p>🏮 Dai colore ai nostri sogni 🌸</p>
-</div>
+      <div class="gift-card"><div style="font-size:2rem">✈️</div><h4>Viaggio di nozze</h4><button class="btn btn-gold" onclick="openGiftModal(0)">Scopri</button></div>
+      <div class="gift-card"><div style="font-size:2rem">🏰</div><h4>Disneyland Paris</h4><button class="btn btn-gold" onclick="openGiftModal(1)">Scopri</button></div>
+      <div class="gift-card"><div style="font-size:2rem">🖼️</div><h4>Cornice digitale</h4><button class="btn btn-gold" onclick="openGiftModal(2)">Scopri</button></div>
+      <div class="gift-card"><div style="font-size:2rem">🎨</div><h4>Quadro personalizzato</h4><button class="btn btn-gold" onclick="openGiftModal(3)">Scopri</button></div>
+    </div>
+    <div class="regalo-inner">
+      <p>🏮 Dai colore ai nostri sogni 🌸</p>
+    </div>
   </div>
 </div>
 
@@ -888,9 +878,9 @@ footer p{
     </svg>
   </div>
 </footer>
+
 <div id="giftModal"
      style="display:none;position:fixed;inset:0;background:rgba(5,2,10,.88);z-index:9999;align-items:center;justify-content:center;padding:1rem">
-
   <div style="
       background:rgba(42,8,72,.97);
       border:1px solid var(--gold);
@@ -900,86 +890,21 @@ footer p{
       width:100%;
       text-align:center;
       box-shadow:0 15px 40px rgba(0,0,0,.5);">
-
-    <div id="gModalTag"
-         style="font-size:1.1rem;margin-bottom:.8rem;color:var(--gold-light)">
+    <div id="gModalTag" style="font-size:1.1rem;margin-bottom:.8rem;color:var(--gold-light)"></div>
+    <h3 id="gModalTitle" style="margin-bottom:1rem;color:white;"></h3>
+    <p id="gModalDesc" style="line-height:1.7;margin-bottom:1.5rem;color:rgba(255,255,255,.9)"></p>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.35);border-radius:14px;padding:1rem;margin-bottom:1rem;">
+      <div style="font-family:var(--title-font);color:var(--gold-light);margin-bottom:.5rem;">Intestatario & IBAN</div>
+      <div style="font-size:0.95rem;margin-bottom:0.4rem;">Elisabetta Russo</div>
+      <div id="gModalIban" style="word-break:break-word;font-size:.95rem;line-height:1.6;">IT32 U062 3002 0410 0001 5606 003</div>
     </div>
-
-    <h3 id="gModalTitle"
-        style="margin-bottom:1rem;color:white;">
-    </h3>
-
-    <p id="gModalDesc"
-       style="line-height:1.7;margin-bottom:1.5rem;color:rgba(255,255,255,.9)">
-    </p>
-
-    <div style="
-        background:rgba(255,255,255,.05);
-        border:1px solid rgba(201,168,76,.35);
-        border-radius:14px;
-        padding:1rem;
-        margin-bottom:1rem;">
-
-      <div style="
-          font-family:var(--title-font);
-          color:var(--gold-light);
-          margin-bottom:.5rem;">
-        Intestatario & IBAN
-      </div>
-
-      <div style="
-           font-size:0.95rem;
-           margin-bottom:0.4rem;">
-        Elisabetta Russo
-      </div>
-
-      <div id="gModalIban"
-           style="
-           word-break:break-word;
-           font-size:.95rem;
-           line-height:1.6;">
-        IT32 U062 3002 0410 0001 5606 003
-      </div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.25);border-radius:14px;padding:1rem;margin-bottom:1.5rem;">
+      <div style="font-family:var(--title-font);color:var(--gold-light);margin-bottom:.5rem;">Causale</div>
+      <div id="gModalCausale" style="line-height:1.6;"></div>
     </div>
-
-    <div style="
-        background:rgba(255,255,255,.05);
-        border:1px solid rgba(201,168,76,.25);
-        border-radius:14px;
-        padding:1rem;
-        margin-bottom:1.5rem;">
-
-      <div style="
-          font-family:var(--title-font);
-          color:var(--gold-light);
-          margin-bottom:.5rem;">
-        Causale
-      </div>
-
-      <div id="gModalCausale"
-           style="line-height:1.6;">
-      </div>
-
-    </div>
-
-    <button class="btn btn-gold"
-            style="width:100%;margin-bottom:.7rem"
-            onclick="copyIBAN()">
-      📋 Copia IBAN
-    </button>
-
-    <button class="btn btn-gold"
-            style="width:100%;margin-bottom:.7rem"
-            onclick="copyCausale()">
-      📝 Copia causale
-    </button>
-
-    <button class="btn btn-dark"
-            style="width:100%"
-            onclick="closeGiftModal()">
-      Chiudi
-    </button>
-
+    <button class="btn btn-gold" style="width:100%;margin-bottom:.7rem" onclick="copyIBAN()">📋 Copia IBAN</button>
+    <button class="btn btn-gold" style="width:100%;margin-bottom:.7rem" onclick="copyCausale()">📝 Copia causale</button>
+    <button class="btn btn-dark" style="width:100%" onclick="closeGiftModal()">Chiudi</button>
   </div>
 </div>
 
@@ -1048,50 +973,20 @@ const obs = new IntersectionObserver(es => {
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 const giftData = [
-{
-  tag:"✈️ Viaggio di nozze",
-  title:"Contributo al viaggio di nozze",
-  desc:"La nostra prima avventura da mogli.",
-  causale:"Regalo Nozze Erika e Elisabetta - Viaggio di Nozze"
-},
-{
-  tag:"🏰 Esperienza Disney",
-  title:"Disneyland Paris",
-  desc:"Il nostro posto del cuore.",
-  causale:"Regalo Nozze Erika e Elisabetta - Disneyland Paris"
-},
-{
-  tag:"🖼️ Per la nostra casa",
-  title:"Cornice digitale",
-  desc:"Per custodire i nostri ricordi.",
-  causale:"Regalo Nozze Erika e Elisabetta - Cornice Digitale"
-},
-{
-  tag:"🎨 Arte personalizzata",
-  title:"Quadro personalizzato",
-  desc:"Un'opera unica.",
-  causale:"Regalo Nozze Erika e Elisabetta - Quadro Personalizzato"
-}
+  { tag:"✈️ Viaggio di nozze", title:"Contributo al viaggio di nozze", desc:"La nostra prima avventura da mogli.", causale:"Regalo Nozze Erika e Elisabetta - Viaggio di Nozze" },
+  { tag:"🏰 Esperienza Disney", title:"Disneyland Paris", desc:"Il nostro posto del cuore.", causale:"Regalo Nozze Erika e Elisabetta - Disneyland Paris" },
+  { tag:"🖼️ Per la nostra casa", title:"Cornice digitale", desc:"Per custodire i nostri ricordi.", causale:"Regalo Nozze Erika e Elisabetta - Cornice Digitale" },
+  { tag:"🎨 Arte personalizzata", title:"Quadro personalizzato", desc:"Un'opera unica.", causale:"Regalo Nozze Erika e Elisabetta - Quadro Personalizzato" }
 ];
 
 let currentGift = null;
 
 function openGiftModal(i){
-
   currentGift = giftData[i];
-
-  document.getElementById('gModalTag').innerText =
-    currentGift.tag;
-
-  document.getElementById('gModalTitle').innerText =
-    currentGift.title;
-
-  document.getElementById('gModalDesc').innerText =
-    currentGift.desc;
-
-  document.getElementById('gModalCausale').innerText =
-    currentGift.causale;
-
+  document.getElementById('gModalTag').innerText = currentGift.tag;
+  document.getElementById('gModalTitle').innerText = currentGift.title;
+  document.getElementById('gModalDesc').innerText = currentGift.desc;
+  document.getElementById('gModalCausale').innerText = currentGift.causale;
   document.getElementById('giftModal').style.display='flex';
 }
 
@@ -1100,29 +995,18 @@ function closeGiftModal(){
 }
 
 function copyIBAN(){
-
-  navigator.clipboard.writeText(
-    "IT32U0623002041000015606003"
-  );
-
+  navigator.clipboard.writeText("IT32U0623002041000015606003");
   alert("IBAN copiato!");
 }
 
 function copyCausale(){
-
-  navigator.clipboard.writeText(
-    currentGift.causale
-  );
-
+  navigator.clipboard.writeText(currentGift.causale);
   alert("Causale copiata!");
 }
 
 window.onclick = function(event){
   const modal = document.getElementById('giftModal');
-
-  if(event.target === modal){
-    closeGiftModal();
-  }
+  if(event.target === modal){ closeGiftModal(); }
 }
 </script>
 </body>
